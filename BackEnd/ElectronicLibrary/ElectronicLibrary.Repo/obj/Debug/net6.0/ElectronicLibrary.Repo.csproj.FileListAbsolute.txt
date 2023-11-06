@@ -1,0 +1,15 @@
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\bin\Debug\net6.0\ElectronicLibrary.Repo.deps.json
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\bin\Debug\net6.0\ElectronicLibrary.Repo.dll
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\bin\Debug\net6.0\ElectronicLibrary.Repo.pdb
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.csproj.AssemblyReference.cache
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.GeneratedMSBuildEditorConfig.editorconfig
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.AssemblyInfoInputs.cache
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.AssemblyInfo.cs
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.csproj.CoreCompileInputs.cache
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.dll
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\refint\ElectronicLibrary.Repo.dll
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.pdb
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ref\ElectronicLibrary.Repo.dll
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\bin\Debug\net6.0\ElectronicLibrary.Core.dll
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\bin\Debug\net6.0\ElectronicLibrary.Core.pdb
+F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Repo\obj\Debug\net6.0\ElectronicLibrary.Repo.csproj.CopyComplete
