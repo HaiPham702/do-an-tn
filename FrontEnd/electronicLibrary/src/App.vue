@@ -1,11 +1,16 @@
-<script setup lang="ts">
-</script>
-
 <template>
-<div>
-  main
-</div>
+  <div>
+    <Layout />
+  </div>
 </template>
 
-<style scoped>
-</style>
+<script>
+import Layout from "@/pages/mainLayout/index.vue";
+export default {
+  components: {
+    Layout,
+  },
+};
+</script>
+
+<style scoped></style>
