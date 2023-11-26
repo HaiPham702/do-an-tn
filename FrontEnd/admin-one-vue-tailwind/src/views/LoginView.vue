@@ -15,7 +15,7 @@ import { useAuthStore } from '@/stores/authStore.js'
 const auth = useAuthStore()
 
 const form = reactive({
-  userName: 'thuytrang',
+  userName: 'phamhai@gmail.com',
   password: '123456',
   remember: true
 })

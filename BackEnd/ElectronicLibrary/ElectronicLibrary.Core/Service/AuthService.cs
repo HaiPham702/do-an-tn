@@ -30,7 +30,7 @@ namespace ElectronicLibrary.Core.Service
         {
             var users = await _userService.GetAll();
 
-            var user = users.Where(n => n.UserName == email).FirstOrDefault();
+            var user = users.Where(n => n.UserName == email || n.Email == email ).FirstOrDefault();
 
             if (user == null || user.PassWord != ComputeSHA256Hash(password))
             {
