@@ -75,7 +75,16 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
+
 var app = builder.Build();
+
+
+app.UseCors(x => x
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .AllowCredentials()
+           //.WithOrigins("http://localhost:5173")); // Allow only this origin can also have multiple origins seperated with comma
+           .SetIsOriginAllowed(origin => true));// Allow any origin  
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

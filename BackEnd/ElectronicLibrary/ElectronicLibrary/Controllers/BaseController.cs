@@ -10,8 +10,9 @@ using ElectronicLibrary.Core.Parameters;
 
 namespace ElectronicLibrary.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class BaseController<Entity> : Controller
     {
         #region field
@@ -33,7 +34,6 @@ namespace ElectronicLibrary.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -51,7 +51,6 @@ namespace ElectronicLibrary.Controllers
         }
 
         [HttpPost("GetPaging")]
-        [Authorize]
         public async Task<IActionResult> GetPaging ([FromBody] PagingParameter entity)
         {
             try
@@ -72,7 +71,6 @@ namespace ElectronicLibrary.Controllers
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [Authorize]
         [HttpPost("Insert")]
         public IActionResult Insert([FromBody] Entity entity)
         {
@@ -94,7 +92,6 @@ namespace ElectronicLibrary.Controllers
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [Authorize]
         [HttpPost("Update")]
         public IActionResult Update([FromBody] Entity entity)
         {
@@ -116,7 +113,6 @@ namespace ElectronicLibrary.Controllers
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [Authorize]
         [HttpDelete("Delete")]
         public IActionResult Delete([FromBody] Entity entity)
         {
@@ -133,7 +129,6 @@ namespace ElectronicLibrary.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost("CheckDuplicate")]
         public IActionResult CheckDuplicate([FromBody] Entity entity)
         {

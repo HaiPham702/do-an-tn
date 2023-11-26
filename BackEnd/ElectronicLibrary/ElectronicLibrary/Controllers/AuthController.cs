@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace ElectronicLibrary.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AuthController : Controller
     {
@@ -38,7 +38,7 @@ namespace ElectronicLibrary.Controllers
                 return Ok(loggedInUser);
             }
 
-            return BadRequest(new { message = "User login unsuccessful" });
+            return BadRequest(new { message = "Thông tin tài khoản hoặc mật khẩu không đúng" });
         }
 
         // POST: auth/register
