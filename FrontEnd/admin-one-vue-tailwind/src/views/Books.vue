@@ -8,7 +8,7 @@
       >
       </SectionTitleLineWithButton>
       <div class="container-grid">
-        <el-table :data="eBooks" height="calc(100% - 500px)" style="width: 100%">
+        <el-table :data="eBooks" height="500" style="width: 100%" @cell-dblclick="onCellDblclick">
           <el-table-column width="100" label="Ảnh bìa" class-name="cover-book">
             <template #default="scope">
               <img :src="buildSrcCoverBook(scope)" />
@@ -21,6 +21,7 @@
       </div>
     </SectionMain>
   </LayoutAuthenticated>
+  <BookDetail ref="refDetail" :form-param="formParam"/>
 </template>
 
 <script setup>
@@ -29,12 +30,19 @@ import SectionMain from '@/components/SectionMain.vue'
 import LayoutAuthenticated from '@/layouts/LayoutAuthenticated.vue'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton.vue'
 import { useBookStore } from '@/stores/bussiness/bookStore.js'
-import { ref, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import DefaltBookImg from '@/assets/icons/book_default.png'
+import BookDetail from '@/views/BookDetail.vue'
 
 const bookStore = useBookStore()
 
 const eBooks = ref([])
+
+const refDetail = ref()
+
+const formParam = ref({
+  
+})
 
 const buildSrcCoverBook = (data) => {
   return DefaltBookImg
@@ -44,6 +52,11 @@ const buildSrcCoverBook = (data) => {
 bookStore.getListAll().then((result) => {
   eBooks.value = result
 })
+
+const onCellDblclick = (row, column, cell, event) => {
+  formParam.value = row
+  refDetail.value.showBookDetail()
+}
 </script>
 
 <style lang="scss" scoped>

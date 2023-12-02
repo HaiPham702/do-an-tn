@@ -5,9 +5,9 @@ import App from './App.vue'
 import router from './router'
 import { useMainStore } from '@/stores/main.js'
 import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
 
 import './css/main.css'
+import 'element-plus/dist/index.css'
 
 // Init Pinia
 const pinia = createPinia()
