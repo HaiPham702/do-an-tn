@@ -14,7 +14,7 @@ namespace ElectronicLibrary.Core.Interface.Service
         /// Lấy danh sách tất cả bản ghi trong db
         /// </summary>
         /// <returns></returns>
-        public Task<List<Entity>> GetPaging(PagingParameter parameter);
+        public Task<PagingResult<Entity>> GetPaging(PagingParameter parameter);
 
         /// <summary>
         /// 

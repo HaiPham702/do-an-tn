@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import { useMainStore } from '@/stores/main.js'
 import ElementPlus from 'element-plus'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import './css/main.css'
 import 'element-plus/dist/index.css'
@@ -13,7 +14,13 @@ import 'element-plus/dist/index.css'
 const pinia = createPinia()
 
 // Create Vue app
-createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app')
+const app = createApp(App)
+
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
+
+app.use(router).use(pinia).use(ElementPlus).mount('#app')
 
 // Init main store
 const mainStore = useMainStore(pinia)
@@ -21,8 +28,6 @@ const mainStore = useMainStore(pinia)
 // Fetch sample data
 mainStore.fetchSampleClients()
 mainStore.fetchSampleHistory()
-
-
 
 // Default title tag
 const defaultDocumentTitle = 'Thư viện điện tử'

@@ -1,4 +1,6 @@
-﻿namespace ElectronicLibrary.Core.Interface.Repository
+﻿using ElectronicLibrary.Core.Parameters;
+
+namespace ElectronicLibrary.Core.Interface.Repository
 {
     public interface IBaseRepo<Entity>
     {
@@ -6,7 +8,7 @@
         /// Lấy danh sách bản ghi có phân trang
         /// </summary>
         /// <returns></returns>
-        public Task<List<Entity>> Get(int limt, int skip, string sort, string filter);
+        Task<PagingResult<Entity>> Get(int limt, int skip, string sort, string filter);
 
         /// <summary>
         /// Lấy danh sách bản ghi

@@ -39,14 +39,18 @@ namespace ElectronicLibrary.Repo.Repository
         /// <param name="sort"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<List<Entity>> Get(int limt, int skip, string sort, string filter)
+        public async Task<PagingResult<Entity>> Get(int limt, int skip, string sort, string filter)
         {
             using (connection = new MySqlConnection(connectionString))
             {
+                var result = new PagingResult<Entity>();
                 // lấy dữ liệu trong database
                 var slqCommand = PartWhere(limt, skip, sort, filter);
-                var result = await connection.QueryAsync<Entity>(slqCommand);
-                return result.ToList();
+                var data = await connection.QueryAsync<Entity>(slqCommand);
+                var total = await connection.QueryAsync<Entity>(SqlCommandCount(filter));
+                result.Data = data.ToList();
+                result.Total = total.ToList().Count();
+                return result;
             }
         }
 
@@ -100,6 +104,43 @@ namespace ElectronicLibrary.Repo.Repository
             if (limt != 0)
             {
                 result += $" LIMIT {limt} OFFSET {skip}";
+            }
+
+            return result;
+        }
+
+        private string SqlCommandCount(string filter)
+        {
+            var result = string.Empty;
+
+            result = $"SELECT * FROM {tableName}";
+
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                var filters = JsonConvert.DeserializeObject<List<Filter>>(filter);
+
+                result += " Where ";
+
+                for (int i = 0; i < filters.Count; i++)
+                {
+                    var op = filters[i].Operator;
+                    //switch (filters[i].Operator)
+                    //{
+                    //    case "=":
+                    //    case ">":
+                    //    case "<":
+                    //    case "=":
+
+                    //        break;
+                    //}
+
+                    if (i > 0)
+                    {
+                        result += " AND ";
+                    }
+
+                    result += $"{filters[i].ColName} {op} '{filters[i].Value}'";
+                }
             }
 
             return result;
@@ -283,7 +324,7 @@ namespace ElectronicLibrary.Repo.Repository
                     slqCommand += " WHERE ";
                     for (int i = 0; i < propNotDuplicate.Count(); i++)
                     {
-                        if(i > 0)
+                        if (i > 0)
                         {
                             slqCommand += " OR ";
                         }

@@ -10,12 +10,12 @@ namespace ElectronicLibrary.Core.Parameters
     {
         public string Columns { get; set; }
 
-        public string Sort { get; set; }
+        public string? Sort { get; set; }
 
-        public string Filter { get; set; }
+        public string? Filter { get; set; }
 
         public int Limt { get; set; }
-            
+
         public int Skip { get; set; }
     }
 
@@ -26,5 +26,12 @@ namespace ElectronicLibrary.Core.Parameters
         public string Value { get; set; }
 
         public string Operator { get; set; }
+    }
+
+    public class PagingResult<Entity>
+    {
+        public List<Entity> Data { get; set; }
+
+        public int Total { get; set; }
     }
 }

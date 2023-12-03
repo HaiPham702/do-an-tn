@@ -28,7 +28,7 @@ export const useBaseStore = defineStore('base', () => {
       .finally(() => {
         loading.value = false
       })
-    if(res) {
+    if (res) {
       items.value = res.data
     }
 
@@ -40,7 +40,7 @@ export const useBaseStore = defineStore('base', () => {
     let res = await httpclient
       .requestAsync(
         {
-          url: buildUrl(),
+          url: buildUrl() + '/GetPaging',
           headers: {},
           data: payload
         },
