@@ -41,7 +41,7 @@ namespace ElectronicLibrary.Core.Service
             return result;
         }
 
-        public async Task<PagingResult<Entity>> GetPaging(PagingParameter parameter)
+        public async Task<PagingResult<object>> GetPaging(PagingParameter parameter)
         {
 
             var result = await _repo.Get(parameter.Limt, parameter.Skip, parameter.Sort, parameter.Filter);

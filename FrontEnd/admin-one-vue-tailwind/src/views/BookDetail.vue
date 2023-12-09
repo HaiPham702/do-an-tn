@@ -4,14 +4,14 @@
       <el-row>
         <el-col :span="16">
           <el-form-item label="Nhan đề" :label-width="formLabelWidth">
-            <el-input v-model="form.bookName" autocomplete="off" placeholder="Nhập nhan đề sách" />
+            <el-input v-model="model.bookName" autocomplete="off" placeholder="Nhập nhan đề sách" />
           </el-form-item>
           <el-form-item label="Tác giả" :label-width="formLabelWidth">
-            <el-input v-model="form.author" autocomplete="off" placeholder="Nhập tên tác giả" />
+            <el-input v-model="model.author" autocomplete="off" placeholder="Nhập tên tác giả" />
           </el-form-item>
           <el-form-item label="Mô tả" :label-width="formLabelWidth">
             <el-input
-              v-model="form.description"
+              v-model="model.description"
               maxlength="255"
               placeholder="Nhập mô tả về sách"
               show-word-limit
@@ -21,7 +21,7 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="Nhóm loại sách" :label-width="formLabelWidth">
-                <el-select v-model="form.region" placeholder="Chọn nhóm loại sách">
+                <el-select v-model="model.region" placeholder="Chọn nhóm loại sách">
                   <el-option label="Zone No.1" value="shanghai" />
                   <el-option label="Zone No.2" value="beijing" />
                 </el-select>
@@ -29,7 +29,7 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="Nhà xuất bản" :label-width="formLabelWidth">
-                <el-select v-model="form.region" placeholder="Chọn nhà xuất bản">
+                <el-select v-model="model.region" placeholder="Chọn nhà xuất bản">
                   <el-option label="Zone No.1" value="shanghai" />
                   <el-option label="Zone No.2" value="beijing" />
                 </el-select>
@@ -87,7 +87,7 @@
   </el-dialog>
 </template>
 <script>
-import { reactive, ref, watch, getCurrentInstance, defineComponent } from 'vue'
+import { reactive, ref, watch, getCurrentInstance, defineComponent, onMounted } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 import UploadImage from '@/assets/image/upload-image.png'
 
@@ -120,15 +120,15 @@ export default defineComponent({
       props.formParam
     }
 
-    const form = reactive({
-      description: null,
-      author: null,
-      bookName: null
-    })
+    let model = reactive()
 
     const handleRemove = (flie) => {
       fileList.value = []
     }
+
+    onMounted(() => {
+      model = props.formParam
+    })
 
     watch(fileList, (val) => {
       if (val.length) {
@@ -139,7 +139,7 @@ export default defineComponent({
     })
 
     return {
-      form,
+      model,
       handleRemove,
       fileList,
       dialogVisible,

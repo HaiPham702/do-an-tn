@@ -5,8 +5,11 @@ using ElectronicLibrary.Core.Models;
 using ElectronicLibrary.Core.Parameters;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Org.BouncyCastle.Asn1.Cms;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using static Dapper.SqlMapper;
@@ -39,20 +42,22 @@ namespace ElectronicLibrary.Repo.Repository
         /// <param name="sort"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<PagingResult<Entity>> Get(int limt, int skip, string sort, string filter)
+        public async Task<PagingResult<object>> Get(int limt, int skip, string sort, string filter)
         {
             using (connection = new MySqlConnection(connectionString))
             {
-                var result = new PagingResult<Entity>();
+                var result = new PagingResult<object>();
                 // lấy dữ liệu trong database
                 var slqCommand = PartWhere(limt, skip, sort, filter);
-                var data = await connection.QueryAsync<Entity>(slqCommand);
-                var total = await connection.QueryAsync<Entity>(SqlCommandCount(filter));
+                var data = await connection.QueryAsync<object>(slqCommand);
+                var total = await connection.QueryAsync<object>(SqlCommandCount(filter));
                 result.Data = data.ToList();
                 result.Total = total.ToList().Count();
                 return result;
             }
         }
+
+
 
         /// <summary>
         /// 
@@ -66,7 +71,9 @@ namespace ElectronicLibrary.Repo.Repository
         {
             var result = string.Empty;
 
-            result = $"SELECT * FROM {tableName}";
+            string nameTabel = GetTableName();
+
+            result = $"SELECT * FROM {nameTabel}";
 
             if (!string.IsNullOrWhiteSpace(filter))
             {
@@ -106,6 +113,18 @@ namespace ElectronicLibrary.Repo.Repository
                 result += $" LIMIT {limt} OFFSET {skip}";
             }
 
+            return result;
+        }
+
+        public virtual string GetTableName()
+        {
+            var result = tableName;
+            switch (tableName)
+            {
+                case "Book":
+                    result = "view_book";
+                    break;
+            }
             return result;
         }
 
@@ -241,7 +260,7 @@ namespace ElectronicLibrary.Repo.Repository
             foreach (var prop in props)
             {
                 // Kiểm tra có phải là khóa chính
-                var isPrimaryKey = Attribute.IsDefined(prop, typeof(PrimaryKey));
+                var isPrimaryKey = System.Attribute.IsDefined(prop, typeof(PrimaryKey));
                 // lấy giá trị của trường
                 var propValue = prop.GetValue(entity, null);
                 switch (actionType)
@@ -286,7 +305,7 @@ namespace ElectronicLibrary.Repo.Repository
                     break;
                 case ActionType.Update:
                     // Cập nhật các thuôc tính không phải là khóa chính
-                    listProperti = entity.GetType().GetProperties().ToList().Where(p => !Attribute.IsDefined(p, typeof(PrimaryKey))).ToList();
+                    listProperti = entity.GetType().GetProperties().ToList().Where(p => !System.Attribute.IsDefined(p, typeof(PrimaryKey))).ToList();
                     break;
 
             }

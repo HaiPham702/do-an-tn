@@ -8,7 +8,7 @@ namespace ElectronicLibrary.Core.Interface.Repository
         /// Lấy danh sách bản ghi có phân trang
         /// </summary>
         /// <returns></returns>
-        Task<PagingResult<Entity>> Get(int limt, int skip, string sort, string filter);
+        Task<PagingResult<object>> Get(int limt, int skip, string sort, string filter);
 
         /// <summary>
         /// Lấy danh sách bản ghi

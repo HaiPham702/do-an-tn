@@ -34,5 +34,17 @@ namespace ElectronicLibrary.Core.Atribute
         /// CreateBy: PVHai (5/1/2022)
         [AttributeUsage(AttributeTargets.All)]
         public class NotDuplicate : Attribute { }
+
+        public class TableAttribute : Attribute
+        {
+            public String TableName { get; set; }   
+            public String View { get; set; } = String.Empty;
+
+            public TableAttribute(string tableName, string view)
+            {
+                TableName = tableName;
+                View = view;
+            }
+        }
     }
 }

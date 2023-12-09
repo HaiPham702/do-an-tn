@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ElectronicLibrary.Core.Atribute.Atribute;
+﻿using static ElectronicLibrary.Core.Atribute.Atribute;
 
 namespace ElectronicLibrary.Core.Models
 {
+    [Table( tableName: "book", view: "view_book" )]
     public class Book
     {
-        [Key]
         public int BookId { get; set; }
         /// <summary>
         /// Tên sách
