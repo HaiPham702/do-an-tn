@@ -1,17 +1,36 @@
 <template>
-  <el-dialog v-model="dialogFormVisible" title="Cập nhật sách điện tử" width="80%" draggable>
-    <el-form :model="form">
+  <el-dialog
+    v-if="dialogFormVisible"
+    v-model="dialogFormVisible"
+    title="Cập nhật sách điện tử"
+    width="80%"
+    draggable
+  >
+    <el-form ref="formRef" :model="formData">
       <el-row>
         <el-col :span="16">
-          <el-form-item label="Nhan đề" :label-width="formLabelWidth">
-            <el-input v-model="model.bookName" autocomplete="off" placeholder="Nhập nhan đề sách" />
+          <el-form-item
+            label="Nhan đề"
+            :label-width="formLabelWidth"
+            prop="BookName"
+            :rules="{
+              required: true,
+              message: 'Nhan đề không được phép bỏ trống',
+              trigger: 'blur'
+            }"
+          >
+            <el-input
+              v-model="formData.BookName"
+              autocomplete="off"
+              placeholder="Nhập nhan đề sách"
+            />
           </el-form-item>
           <el-form-item label="Tác giả" :label-width="formLabelWidth">
-            <el-input v-model="model.author" autocomplete="off" placeholder="Nhập tên tác giả" />
+            <el-input v-model="formData.Author" autocomplete="off" placeholder="Nhập tên tác giả" />
           </el-form-item>
           <el-form-item label="Mô tả" :label-width="formLabelWidth">
             <el-input
-              v-model="model.description"
+              v-model="formData.Description"
               maxlength="255"
               placeholder="Nhập mô tả về sách"
               show-word-limit
@@ -20,18 +39,35 @@
           </el-form-item>
           <el-row>
             <el-col :span="12">
-              <el-form-item label="Nhóm loại sách" :label-width="formLabelWidth">
-                <el-select v-model="model.region" placeholder="Chọn nhóm loại sách">
-                  <el-option label="Zone No.1" value="shanghai" />
-                  <el-option label="Zone No.2" value="beijing" />
+              <el-form-item
+                label="Nhóm loại sách"
+                :label-width="formLabelWidth"
+                prop="BookGroupID"
+                :rules="{
+                  required: true,
+                  message: 'Nhan đề không được phép bỏ trống',
+                  trigger: 'blur'
+                }"
+              >
+                <el-select v-model="formData.BookGroupID" placeholder="Chọn nhóm loại sách">
+                  <el-option
+                    v-for="(item, index) in bookgroups"
+                    :key="index"
+                    :label="item.groupName"
+                    :value="item.bookGroupID"
+                  />
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item label="Nhà xuất bản" :label-width="formLabelWidth">
-                <el-select v-model="model.region" placeholder="Chọn nhà xuất bản">
-                  <el-option label="Zone No.1" value="shanghai" />
-                  <el-option label="Zone No.2" value="beijing" />
+                <el-select v-model="formData.PublisherId" placeholder="Chọn nhà xuất bản">
+                  <el-option
+                    v-for="(item, index) in publishers"
+                    :key="index"
+                    :label="item?.publisherName"
+                    :value="item.publisherID"
+                  />
                 </el-select>
               </el-form-item>
             </el-col>
@@ -41,12 +77,13 @@
           <div class="ml-4">
             <div class="mb-2">Ảnh bìa sách</div>
             <el-upload
-              v-model:file-list="fileList"
+              v-model:file-list="fileCover"
               action="#"
               list-type="picture-card"
               :auto-upload="false"
               drag
               :limit="1"
+              accept="image/*"
             >
               <el-icon><Plus /></el-icon>
 
@@ -71,6 +108,13 @@
                 </div>
               </template>
             </el-upload>
+
+            <FormFilePicker
+              v-model="fileBook"
+              class="mt-3"
+              label="Tải file sách"
+              accept=".pdf"
+            />
           </div>
         </el-col>
       </el-row>
@@ -78,7 +122,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Đóng</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">Lưu</el-button>
+        <el-button type="primary" @click="submitForm">Lưu</el-button>
       </span>
     </template>
   </el-dialog>
@@ -86,23 +130,97 @@
     <img w-full :src="dialogImageUrl" alt="Preview Image" />
   </el-dialog>
 </template>
-<script>
-import { reactive, ref, watch, getCurrentInstance, defineComponent, onMounted } from 'vue'
+<script lang="ts">
+import FormFilePicker from '@/components/FormFilePicker.vue'
+import { ref, watch, getCurrentInstance, defineComponent, onMounted, computed } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 import UploadImage from '@/assets/image/upload-image.png'
+import { usePublisherStore } from '@/stores/bussiness/publisherStore.js'
+import { ElMessage } from 'element-plus'
 
 export default defineComponent({
+  components: {
+    FormFilePicker
+  },
   props: {
     formParam: {
       type: Object,
       default: () => {}
     }
   },
-  setup(props) {
+  emits: ['reloadData'],
+
+  setup(props, { emit }) {
     const { proxy } = getCurrentInstance()
+    const formData = ref({})
+
+    const publisherStore = usePublisherStore()
+
+    const editMode = computed(() => {
+      if (formData.value.BookId) {
+        return 2
+      } else {
+        return 1
+      }
+    })
+
+    const fileBook = ref()
+
+    const formRef = ref()
+
+    const submitData = () => {
+      debugger
+      switch (editMode.value) {
+        case 1: // insert
+          break
+
+        case 2: // update
+          submitUpdate()
+          break
+      }
+    }
+
+    const submitUpdate = () => {
+      let data = formData.value
+      let sql = `UPDATE book b SET BookName = '${
+        data.BookName ? data.BookName : ''
+      }',Description = '${data.Description ? data.Description : ''}',Author = '${
+        data.Author ? data.Author : ''
+      }',BookGroupID = ${data.BookGroupID},PublisherId = ${data.PublisherId},FileBookID = '${
+        data.FileBookID
+      }',FileCoverBook = '${data.FileCoverBook ? data.FileCoverBook : ''}' WHERE BookId = ${
+        data.BookId
+      };`
+
+      publisherStore.executeCommand('Publisher', sql).then((res) => {
+        ElMessage({
+          type: 'success',
+          message: 'Cập nhật thành công'
+        })
+
+        emit('reloadData')
+
+        dialogFormVisible.value = false
+      })
+    }
+
+    const submitForm = () => {
+      if (!formRef.value) return
+      formRef.value.validate((valid) => {
+        if (valid) {
+          submitData()
+        } else {
+          console.log('error submit!')
+          return false
+        }
+      })
+    }
+
+    const formLabelWidth = '130px'
+
     const dialogFormVisible = ref(false)
 
-    const fileList = ref()
+    const fileCover = ref()
 
     const dialogImageUrl = ref('')
     const dialogVisible = ref(false)
@@ -113,44 +231,75 @@ export default defineComponent({
       dialogVisible.value = true
     }
 
-    const formLabelWidth = '130px'
-
     const showBookDetail = () => {
       dialogFormVisible.value = true
-      props.formParam
     }
-
-    let model = reactive()
 
     const handleRemove = (flie) => {
-      fileList.value = []
+      fileCover.value = []
     }
 
+    const publishers = ref([])
+
+    const bookgroups = ref([])
+
     onMounted(() => {
-      model = props.formParam
+      formData.value = props.formParam
+      publisherStore.getListAll('Publisher').then((res) => {
+        publishers.value = res
+      })
+      publisherStore.getListAll('BookGroup').then((res) => {
+        bookgroups.value = res
+      })
     })
 
-    watch(fileList, (val) => {
+    watch(fileCover, (val) => {
       if (val.length) {
+        let imageMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']
+
+        if (!imageMimes.includes(val[0].raw.type)) {
+          ElMessage({
+            type: 'error',
+            message: 'File không đúng định dạng.'
+          })
+
+          fileCover.value = []
+        }
+
+
         document.querySelector('.el-upload').style.display = 'none'
       } else {
         document.querySelector('.el-upload').style.display = 'block'
       }
     })
 
+    watch(
+      () => props.formParam,
+      (val) => {
+        if (val) {
+          formData.value = val
+        }
+      }
+    )
+
     return {
-      model,
-      handleRemove,
-      fileList,
+      fileBook,
+      formRef,
+      submitForm,
+      bookgroups,
+      publishers,
+      formData,
+      fileCover,
       dialogVisible,
       dialogImageUrl,
-      handlePictureCardPreview,
       UploadImage,
       formLabelWidth,
       dialogFormVisible,
       disabled,
+      handleRemove,
       UploadFilled,
-      showBookDetail
+      showBookDetail,
+      handlePictureCardPreview
     }
   }
 })

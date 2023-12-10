@@ -12,6 +12,9 @@ F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\Ele
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ref\ElectronicLibrary.Core.dll
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.Resources.MessegeResources.resources
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.csproj.GenerateResource.cache
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.deps.json
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.dll
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.pdb
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.csproj.AssemblyReference.cache
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.Resources.MessegeResources.resources
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.csproj.GenerateResource.cache
@@ -19,9 +22,6 @@ F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\El
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.AssemblyInfoInputs.cache
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.AssemblyInfo.cs
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.csproj.CoreCompileInputs.cache
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.deps.json
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.dll
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\bin\Debug\net6.0\ElectronicLibrary.Core.pdb
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\refint\ElectronicLibrary.Core.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary.Core\obj\Debug\net6.0\ElectronicLibrary.Core.pdb

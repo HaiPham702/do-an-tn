@@ -2,6 +2,7 @@
 import { mdiUpload } from '@mdi/js'
 import { computed, ref, watch } from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
+import { ElMessage } from 'element-plus'
 
 const props = defineProps({
   modelValue: {
@@ -41,45 +42,27 @@ watch(modelValueProp, (value) => {
   file.value = value
 
   if (!value) {
-    root.value.input.value = null
+    root.value.value = null
   }
 })
 
 const upload = (event) => {
   const value = event.target.files || event.dataTransfer.files
 
-  file.value = value[0]
+  let file = value[0]
 
-  emit('update:modelValue', file.value)
-
-  // Use this as an example for handling file uploads
-  // let formData = new FormData()
-  // formData.append('file', file.value)
-
-  // const mediaStoreRoute = `/your-route/`
-
-  // axios
-  //   .post(mediaStoreRoute, formData, {
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data'
-  //     },
-  //     onUploadProgress: progressEvent
-  //   })
-  //   .then(r => {
-  //
-  //   })
-  //   .catch(err => {
-  //
-  //   })
+  if (file.type === 'application/pdf') {
+    file.value = file
+    emit('update:modelValue', file.value)
+  } else {
+    ElMessage({
+      type: 'error',
+      message: 'File sách không đúng định dạng'
+    })
+    file.value = null
+    emit('update:modelValue', file.value)
+  }
 }
-
-// const uploadPercent = ref(0)
-//
-// const progressEvent = progressEvent => {
-//   uploadPercent.value = Math.round(
-//     (progressEvent.loaded * 100) / progressEvent.total
-//   )
-// }
 </script>
 
 <template>

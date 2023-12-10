@@ -15,10 +15,11 @@
               <img :src="buildSrcCoverBook(scope)" />
             </template>
           </el-table-column>
-          <el-table-column prop="bookName" label="Tên sách" width="250" />
-          <el-table-column prop="description" label="Mô tả" width="300" />
-          <el-table-column prop="address" label="Address" />
-          <el-table-column>
+          <el-table-column prop="BookName" label="Tên sách" width="250" />
+          <el-table-column prop="Description" label="Mô tả" width="300" />
+          <el-table-column prop="Author" label="Tác giả" />
+          <el-table-column prop="GroupName" label="Nhóm loại sách" width="150" />
+          <el-table-column width="140">
             <template #default="scope">
               <el-button size="small" @click="onOpentFormEdit(scope.$index, scope.row)"
                 >Sửa</el-button
@@ -52,7 +53,7 @@
       </div>
     </SectionMain>
   </LayoutAuthenticated>
-  <BookDetail ref="refDetail" :form-param="formParam" />
+  <BookDetail ref="refDetail" :form-param="formParam" @reloadData="loadData" />
 </template>
 
 <script setup>
@@ -64,6 +65,7 @@ import { useBookStore } from '@/stores/bussiness/bookStore.js'
 import { ref, onMounted, reactive } from 'vue'
 import DefaltBookImg from '@/assets/icons/book_default.png'
 import BookDetail from '@/views/BookDetail.vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const state = reactive({
   totalBook: 0,
@@ -102,9 +104,9 @@ const loadData = () => {
     sort: 'BookName',
     filter: null,
     limt: state.pageSize,
-    skip: state.pageSize * state.currentPage
+    skip: state.pageSize * (state.currentPage - 1)
   }
-  bookStore.getPaging(payload).then((result) => {
+  bookStore.getPaging('Book', payload).then((result) => {
     if (result) {
       eBooks.value = result.data
       state.totalBook = result.total
@@ -119,6 +121,25 @@ onMounted(() => {
 const onOpentFormEdit = (index, rowData) => {
   formParam.value = rowData
   refDetail.value.showBookDetail()
+  refDetail.value.editMode = 2
+}
+
+const handleDelete = (index, rowData) => {
+  let sql = `DELETE FROM book WHERE BookId = ${rowData.BookId}`
+
+  ElMessageBox.confirm(`Bạn có muốn xóa sách ${rowData.BookName}?`, 'Thông báo', {
+    confirmButtonText: 'Xóa',
+    cancelButtonText: 'Đóng',
+    type: 'warning'
+  }).then(() => {
+    bookStore.executeCommand('Book', sql).then((res) => {
+      ElMessage({
+        type: 'success',
+        message: 'Xóa thành công'
+      })
+      loadData()
+    })
+  })
 }
 </script>
 

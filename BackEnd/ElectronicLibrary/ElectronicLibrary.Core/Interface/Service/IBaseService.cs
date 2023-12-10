@@ -16,6 +16,9 @@ namespace ElectronicLibrary.Core.Interface.Service
         /// <returns></returns>
         public Task<PagingResult<object>> GetPaging(PagingParameter parameter);
 
+
+        public Task<object> ExecuteCommand(string sql);
+
         /// <summary>
         /// 
         /// </summary>

@@ -72,12 +72,6 @@ F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\runtimes
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.Repo.dll
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.Repo.pdb
 F:\ANPVHAI\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Newtonsoft.Json.dll
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.csproj.AssemblyReference.cache
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.GeneratedMSBuildEditorConfig.editorconfig
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.AssemblyInfoInputs.cache
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.AssemblyInfo.cs
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.csproj.CoreCompileInputs.cache
-F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.MvcApplicationPartsAssemblyInfo.cache
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\appsettings.Development.json
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\appsettings.json
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.exe
@@ -87,6 +81,7 @@ F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Electro
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.pdb
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\BCrypt.Net-Next.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Dapper.dll
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Ghostscript.NET.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Google.Protobuf.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\K4os.Compression.LZ4.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\K4os.Compression.LZ4.Streams.dll
@@ -101,6 +96,7 @@ F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Microso
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\MySql.Data.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Newtonsoft.Json.dll
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\PdfiumViewer.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -116,6 +112,7 @@ F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\System.
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\System.Text.Json.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\System.Windows.Extensions.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ZstdSharp.dll
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\nl\PdfiumViewer.resources.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\runtimes\win-x64\native\comerr64.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\runtimes\win-x64\native\gssapi64.dll
@@ -131,6 +128,13 @@ F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\Electro
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.Repo.dll
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.Core.pdb
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\bin\Debug\net6.0\ElectronicLibrary.Repo.pdb
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.csproj.AssemblyReference.cache
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.GeneratedMSBuildEditorConfig.editorconfig
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.AssemblyInfoInputs.cache
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.AssemblyInfo.cs
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.csproj.CoreCompileInputs.cache
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.MvcApplicationPartsAssemblyInfo.cs
+F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\ElectronicLibrary.MvcApplicationPartsAssemblyInfo.cache
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\staticwebassets\msbuild.ElectronicLibrary.Microsoft.AspNetCore.StaticWebAssets.props
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\staticwebassets\msbuild.build.ElectronicLibrary.props
 F:\do-an-tn\BackEnd\ElectronicLibrary\ElectronicLibrary\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ElectronicLibrary.props

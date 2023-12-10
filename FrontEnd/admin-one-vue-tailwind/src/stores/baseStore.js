@@ -11,15 +11,15 @@ export const useBaseStore = defineStore('base', () => {
   const loading = ref(false)
 
   const buildUrl = () => {
-    return window._apis['Business'] + '/' + controlName.value
+    return window._apis['Business'] + '/'
   }
 
-  const getListAll = async () => {
+  const getListAll = async (controlName) => {
     loading.value = true
     let res = await httpclient
       .requestAsync(
         {
-          url: buildUrl(),
+          url: buildUrl() + `${controlName}`,
           headers: {}
         },
         'GET'
@@ -28,21 +28,36 @@ export const useBaseStore = defineStore('base', () => {
       .finally(() => {
         loading.value = false
       })
-    if (res) {
-      items.value = res.data
-    }
 
     return res.data
   }
 
-  const getPaging = async (payload) => {
+  const getPaging = async (controlName, payload) => {
     loading.value = true
     let res = await httpclient
       .requestAsync(
         {
-          url: buildUrl() + '/GetPaging',
+          url: buildUrl() + `${controlName}` + '/GetPaging',
           headers: {},
           data: payload
+        },
+        'POST'
+      )
+      .finally(() => {
+        loading.value = false
+      })
+
+    return res.data
+  }
+
+  const executeCommand = async (controlName, sql) => {
+    loading.value = true
+    let res = await httpclient
+      .requestAsync(
+        {
+          url: buildUrl() + `${controlName}` + '/ExecuteCommand',
+          headers: {},
+          data: sql
         },
         'POST'
       )
@@ -70,6 +85,7 @@ export const useBaseStore = defineStore('base', () => {
     items,
     controlName,
     getListAll,
-    getPaging
+    getPaging,
+    executeCommand
   }
 })

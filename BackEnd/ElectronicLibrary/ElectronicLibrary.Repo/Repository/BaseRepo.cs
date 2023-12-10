@@ -406,6 +406,14 @@ namespace ElectronicLibrary.Repo.Repository
             }
             return result;
         }
+
+        public async Task<object> ExecuteCommand(string sql)
+        {
+            using (connection = new MySqlConnection(connectionString))
+            {
+                return await connection.QueryAsync<object>(sql);
+            }
+        }
         #endregion
     }
 }

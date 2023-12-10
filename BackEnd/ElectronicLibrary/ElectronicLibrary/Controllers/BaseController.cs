@@ -66,6 +66,22 @@ namespace ElectronicLibrary.Controllers
             }
         }
 
+        [HttpPost("ExecuteCommand")]
+        public async Task<IActionResult> ExecuteCommand([FromBody] string sql)
+        {
+            try
+            {
+                var res = await _service.ExecuteCommand(sql);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                var res = new ErrorEntity(MessegeResources.ErrorMessage, ex.Message);
+                StatusCode(500, res);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Insert Entity
         /// </summary>

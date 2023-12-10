@@ -4,6 +4,8 @@ namespace ElectronicLibrary.Core.Interface.Repository
 {
     public interface IBaseRepo<Entity>
     {
+        public Task<object> ExecuteCommand(string sql);
+
         /// <summary>
         /// Lấy danh sách bản ghi có phân trang
         /// </summary>

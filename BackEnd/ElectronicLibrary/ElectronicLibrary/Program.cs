@@ -20,10 +20,14 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 // Service
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookGroupService, BookGroupService>();
+builder.Services.AddScoped<IPublisherService, PublisherService>();
 
 // Repo
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IBookRepo, BookRepo>();
+builder.Services.AddScoped<IBookGroupRepo, BookGroupRepo>();
+builder.Services.AddScoped<IPublisherRepo, PublisherRepo>();
 
 builder.Services.AddAuthentication(opt =>
 {

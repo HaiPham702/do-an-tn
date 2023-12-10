@@ -68,5 +68,10 @@ namespace ElectronicLibrary.Core.Service
         {
             return _repo.Update(entity);
         }
+
+        public async Task<object> ExecuteCommand(string sql)
+        {
+            return await _repo.ExecuteCommand(sql);
+        }
     }
 }
