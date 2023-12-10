@@ -41,5 +41,7 @@ namespace ElectronicLibrary.Core.Models
         /// Ảnh bìa
         /// </summary>
         public string FileCoverBook { get; set; }
+
+        public string FileName { get; set; }
     }
 }

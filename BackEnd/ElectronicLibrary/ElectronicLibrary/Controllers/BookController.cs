@@ -36,7 +36,7 @@ namespace ElectronicLibrary.Controllers
 
 
                 // Đường dẫn đến thư mục để lưu trữ file PDF
-                var uploadFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "BookFile");
+                var uploadFolder = Path.Combine(@"F:\do-an-tn\FrontEnd\electronicLibrary.ui\src\assets", "BookFile");
 
                 // Tạo thư mục nếu nó không tồn tại
                 if (!Directory.Exists(uploadFolder))
