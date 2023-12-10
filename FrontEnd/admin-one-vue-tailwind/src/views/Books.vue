@@ -12,7 +12,12 @@
           <el-table-column type="selection" width="55" />
           <el-table-column width="100" label="Ảnh bìa" class-name="cover-book">
             <template #default="scope">
-              <img :src="buildSrcCoverBook(scope)" />
+              <img
+                v-lazy="{
+                  src: buildSrcCoverBook(scope),
+                  error: DefaltBookImg
+                }"
+              />
             </template>
           </el-table-column>
           <el-table-column prop="BookName" label="Tên sách" width="250" />
@@ -67,6 +72,8 @@ import DefaltBookImg from '@/assets/icons/book_default.png'
 import BookDetail from '@/views/BookDetail.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
+const PATH_IMAGE = 'F:/do-an-tn/BackEnd/ElectronicLibrary/ElectronicLibrary/BookFile/'
+
 const state = reactive({
   totalBook: 0,
   pageSize: 20,
@@ -82,7 +89,11 @@ const refDetail = ref()
 const formParam = ref({})
 
 const buildSrcCoverBook = (data) => {
-  return DefaltBookImg
+  if (data?.row.FileCoverBook) {
+    return `${PATH_IMAGE}${data?.row.FileCoverBook}`
+  } else {
+    // return DefaltBookImg
+  }
 }
 
 const handlePageSizeChange = (num) => {

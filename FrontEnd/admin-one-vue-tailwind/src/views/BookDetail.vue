@@ -109,12 +109,7 @@
               </template>
             </el-upload>
 
-            <FormFilePicker
-              v-model="fileBook"
-              class="mt-3"
-              label="Tải file sách"
-              accept=".pdf"
-            />
+            <FormFilePicker v-model="fileBook" class="mt-3" label="Tải file sách" accept=".pdf" />
           </div>
         </el-col>
       </el-row>
@@ -168,29 +163,42 @@ export default defineComponent({
 
     const formRef = ref()
 
-    const submitData = () => {
-      debugger
-      switch (editMode.value) {
-        case 1: // insert
-          break
+    const fileCover = ref()
 
-        case 2: // update
-          submitUpdate()
-          break
+    const submitData = async () => {
+      if (fileBook.value) {
+        publisherStore
+          .uploadFile('Book', {
+            file: fileBook.value,
+            imageCover: fileCover.value
+          })
+          .then((res) => {
+            switch (editMode.value) {
+              case 1: // insert
+                break
+
+              case 2: // update
+                submitUpdate(res.data)
+                break
+            }
+          })
+      } else {
+        ElMessage({
+          type: 'warning',
+          message: 'File sách không được để trống'
+        })
       }
     }
 
-    const submitUpdate = () => {
+    const submitUpdate = (fileData) => {
       let data = formData.value
       let sql = `UPDATE book b SET BookName = '${
         data.BookName ? data.BookName : ''
       }',Description = '${data.Description ? data.Description : ''}',Author = '${
         data.Author ? data.Author : ''
       }',BookGroupID = ${data.BookGroupID},PublisherId = ${data.PublisherId},FileBookID = '${
-        data.FileBookID
-      }',FileCoverBook = '${data.FileCoverBook ? data.FileCoverBook : ''}' WHERE BookId = ${
-        data.BookId
-      };`
+        fileData.fileName
+      }',FileCoverBook = '${fileData.imageCoverName}' WHERE BookId = ${data.BookId};`
 
       publisherStore.executeCommand('Publisher', sql).then((res) => {
         ElMessage({
@@ -219,8 +227,6 @@ export default defineComponent({
     const formLabelWidth = '130px'
 
     const dialogFormVisible = ref(false)
-
-    const fileCover = ref()
 
     const dialogImageUrl = ref('')
     const dialogVisible = ref(false)
@@ -265,7 +271,6 @@ export default defineComponent({
 
           fileCover.value = []
         }
-
 
         document.querySelector('.el-upload').style.display = 'none'
       } else {

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 import { ElLoading } from 'element-plus'
 import httpclient from '@/apis/httpclient'
+import axios from 'axios'
 
 export const useBaseStore = defineStore('base', () => {
   const controlName = ref('')
@@ -68,6 +69,18 @@ export const useBaseStore = defineStore('base', () => {
     return res.data
   }
 
+  const uploadFile = async (controlName, playload) => {
+    loading.value = true
+    return await axios
+      .post(buildUrl() + `${controlName}` + '/UploadFile', playload, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).finally(() => {
+        loading.value = false
+      })
+  }
+
   watch(
     () => loading.value,
     (newVal) => {
@@ -84,6 +97,7 @@ export const useBaseStore = defineStore('base', () => {
   return {
     items,
     controlName,
+    uploadFile,
     getListAll,
     getPaging,
     executeCommand
