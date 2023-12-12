@@ -40,18 +40,17 @@ const submitPass = () => {
   <LayoutAuthenticated>
     <SectionMain>
       <SectionTitleLineWithButton :icon="mdiAccount" title="Hồ sơ" main>
-       
       </SectionTitleLineWithButton>
 
       <UserCard class="mb-6" />
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <CardBox is-form @submit.prevent="submitProfile">
-          <FormField label="Avatar" help="Max 500kb">
-            <FormFilePicker label="Upload" />
-          </FormField>
+          <!-- <FormField label="Ảnh đại diện" help="Max 500kb">
+            <FormFilePicker accept="image/* " label="Upload" />
+          </FormField> -->
 
-          <FormField label="Name" help="Required. Your name">
+          <FormField label="Họ và tên" help="Required. Your name">
             <FormControl
               v-model="profileForm.name"
               :icon="mdiAccount"
@@ -73,7 +72,7 @@ const submitPass = () => {
 
           <template #footer>
             <BaseButtons>
-              <BaseButton color="info" type="submit" label="Submit" />
+              <BaseButton color="info" type="submit" label="Lưu" />
             </BaseButtons>
           </template>
         </CardBox>

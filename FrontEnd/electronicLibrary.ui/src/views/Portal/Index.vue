@@ -1,0 +1,124 @@
+<template>
+  <div class="portal">
+    <div class="portal-info py-2 container-portal flex justify-between">
+      <div class="logo flex">
+        <img class="mr-4" src="@/assets/icons/LogoSchool.svg" alt="" />
+        <div class="">
+          <div class="font-bold text-lg">Trường Tiểu học thư viện điện tử</div>
+          <div>Địa chỉ: Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội</div>
+        </div>
+      </div>
+      <div class="user-info flex items-center">
+        <div class="mr-4">{{ userName }}</div>
+        <el-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=phamhai-gmail-com" />
+      </div>
+    </div>
+    <!-- Danh sách nhóm loại sách -->
+    <div class="list-bookGroup container-portal">
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <div>
+            <img src="@/assets/icons/ThreeLine.svg" />
+          </div>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item v-for="(item, index) in groupBook" :key="index">{{
+              item.GroupName
+            }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
+    <div>
+      <img src="@/assets/image/BannerDefault.png" />
+    </div>
+    <!-- Input tìm kiếm -->
+
+    <div class="container-portal py-4">
+      <div class="search-container">
+        <div class="input-wrap">
+          <input
+            class="ms-input-item flex w-full"
+            placeholder="Nhập nhan đề, Tên tác giả"
+            maxlength="255"
+          />
+        </div>
+        <button class="btn-search">
+          <div class="text">Tìm kiếm</div>
+        </button>
+      </div>
+    </div>
+    <div class="container-portal">
+      <GroupViewBook />
+    </div>
+  </div>
+</template>
+<script setup>
+import { computed, onMounted, ref } from 'vue'
+import { useMainStore } from '@/stores/main'
+import { useBookStore } from '@/stores/bussiness/bookStore.js'
+import GroupViewBook from '@/views/Portal/GroupViewBook.vue'
+
+const mainStore = useMainStore()
+const userName = computed(() => mainStore.userName)
+
+const bookStore = useBookStore()
+
+const groupBook = ref([])
+
+const getBooKGroup = () => {
+  let sql = `SELECT
+            b.BookGroupId,
+            b.GroupName
+          FROM bookgroup b
+            INNER JOIN book b1
+              ON b.BookGroupId = b1.BookGroupId
+          GROUP BY b.BookGroupId,
+                  b.GroupName
+          ORDER BY COUNT(*) DESC`
+
+  bookStore.executeCommand('Book', sql).then((res) => {
+    groupBook.value = res
+  })
+}
+
+onMounted(() => {
+  getBooKGroup()
+})
+</script>
+<style lang="scss" scope>
+.container-portal {
+  width: 1104px;
+  margin: auto;
+}
+
+.portal {
+  height: 100vh;
+  margin: auto;
+  .portal-info {
+  }
+}
+
+.search-container {
+  display: flex;
+  border: 1px solid #dbdbdb;
+  padding-left: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  .input-wrap {
+    flex: 1;
+    input {
+      border: none;
+      outline: none;
+    }
+  }
+  .btn-search {
+    padding: 0 12px;
+    background: #04acf1;
+    border: 1px solid #04acf1;
+    font-weight: 700;
+    color: white;
+  }
+}
+</style>

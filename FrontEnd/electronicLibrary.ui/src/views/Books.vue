@@ -60,7 +60,7 @@
     </SectionMain>
   </LayoutAuthenticated>
   <BookDetail ref="refDetail" :form-param="formParam" @reloadData="loadData" />
-  <el-dialog v-model="dialogVisible">
+  <el-dialog v-model="viewImageVisible">
     <img w-full :src="dialogViewImageImageUrl" alt="Preview Image" />
   </el-dialog>
 </template>
@@ -90,14 +90,10 @@ const viewImageVisible = ref(false)
 
 const dialogViewImageImageUrl = ref('')
 
-const onViewImage = (url) =>  {
-  try {
+const onViewImage = (url) => {
   dialogViewImageImageUrl.value = url
   viewImageVisible.value = true
-  }
-
 }
-
 
 const eBooks = ref([])
 

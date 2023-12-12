@@ -32,26 +32,6 @@ export default [
     label: 'Hệ thống',
     icon: mdiCog
   },
-  {
-    to: '/responsive',
-    label: 'Responsive',
-    icon: mdiResponsive
-  },
-  {
-    to: '/',
-    label: 'Styles',
-    icon: mdiPalette
-  },
-  {
-    to: '/profile',
-    label: 'Profile',
-    icon: mdiAccountCircle
-  },
-  {
-    to: '/login',
-    label: 'Login',
-    icon: mdiLock
-  },
- 
+
 
 ]

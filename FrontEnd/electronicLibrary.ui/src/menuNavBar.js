@@ -12,32 +12,15 @@ export default [
     menu: [
       {
         icon: mdiAccount,
-        label: 'My Profile',
+        label: 'Hồ sơ của tôi',
         to: '/profile'
       },
       {
-        icon: mdiCogOutline,
-        label: 'Settings'
-      },
-      {
-        icon: mdiEmail,
-        label: 'Messages'
-      },
-      {
-        isDivider: true
-      },
-      {
         icon: mdiLogout,
-        label: 'Log Out',
-        isLogout: true
+        label: 'Đăng xuất',
+        isLogout: true,
+        to: '/login'
       }
     ]
-  },
-
-  {
-    icon: mdiLogout,
-    label: 'Log out',
-    isDesktopNoLabel: true,
-    isLogout: true
   }
 ]

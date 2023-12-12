@@ -177,7 +177,7 @@ export default defineComponent({
         publisherStore
           .uploadFile('Book', {
             file: fileBook.value,
-            imageCover: fileCover.value[0]?.raw
+            imageCover: fileCover.value ?  fileCover.value[0]?.raw : null
           })
           .then((res) => {
             switch (editMode.value) {
@@ -253,8 +253,7 @@ export default defineComponent({
     }
 
     const handleRemove = (flie) => {
-      fileCover.value = null
-      fileBook.value = null
+      fileCover.value = []
     }
 
     const publishers = ref([])
@@ -345,6 +344,7 @@ export default defineComponent({
       if (!val) {
         fileCover.value = []
         fileBook.value = null
+        fileNameUser.value = null
       } else if (formData.value) {
         let data = formData.value
         if (data?.FileCoverBook) {

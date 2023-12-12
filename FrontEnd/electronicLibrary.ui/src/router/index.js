@@ -2,12 +2,11 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/views/HomeView.vue'
 
 const routes = [
-
   {
     // Document title tag
     // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
     meta: {
-      title: 'Dashboard'
+      title: 'Tổng quan'
     },
     path: '/',
     name: 'dashboard',
@@ -31,7 +30,7 @@ const routes = [
   },
   {
     meta: {
-      title: 'Profile'
+      title: 'Hồ sơ'
     },
     path: '/profile',
     name: 'profile',
@@ -47,15 +46,7 @@ const routes = [
   },
   {
     meta: {
-      title: 'Responsive layout'
-    },
-    path: '/responsive',
-    name: 'responsive',
-    component: () => import('@/views/ResponsiveView.vue')
-  },
-  {
-    meta: {
-      title: 'Login'
+      title: 'Đăng nhập'
     },
     path: '/login',
     name: 'login',
@@ -68,6 +59,15 @@ const routes = [
     path: '/error',
     name: 'error',
     component: () => import('@/views/ErrorView.vue')
+  },
+
+  {
+    meta: {
+      title: 'Cổng bạn đọc'
+    },
+    path: '/portal',
+    name: 'portal',
+    component: () => import('@/views/Portal/Index.vue')
   }
 ]
 

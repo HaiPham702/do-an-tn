@@ -5,6 +5,9 @@ using ElectronicLibrary.Core.Models;
 using ElectronicLibrary.Core.Resources;
 using Ghostscript.NET;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
+using System.Net.Sockets;
 
 namespace ElectronicLibrary.Controllers
 {
@@ -27,14 +30,6 @@ namespace ElectronicLibrary.Controllers
         {
             try
             {
-                // Kiểm tra file có phải là PDF hay không
-                if (file.ContentType != "application/pdf")
-                {
-                    return BadRequest("File không phải là PDF.");
-                }
-
-
-
                 // Đường dẫn đến thư mục để lưu trữ file PDF
                 var uploadFolder = Path.Combine(@"F:\do-an-tn\FrontEnd\electronicLibrary.ui\src\assets", "BookFile");
 

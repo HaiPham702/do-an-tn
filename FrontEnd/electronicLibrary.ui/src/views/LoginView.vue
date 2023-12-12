@@ -31,7 +31,7 @@ const submit = () => {
   <LayoutGuest>
     <SectionFullScreen v-slot="{ cardClass }" bg="purplePink">
       <CardBox :class="cardClass" is-form @submit.prevent="submit">
-        <FormField label="Đăng nhập" help="Please enter your login">
+        <FormField label="Đăng nhập" help="Nhập tài khoản của bạn">
           <FormControl
             v-model="form.userName"
             :icon="mdiAccount"
@@ -40,7 +40,7 @@ const submit = () => {
           />
         </FormField>
 
-        <FormField label="Password" help="Please enter your password">
+        <FormField label="Mật khẩu" help="Nhập mật khẩu của bạn">
           <FormControl
             v-model="form.password"
             :icon="mdiAsterisk"
@@ -53,14 +53,14 @@ const submit = () => {
         <FormCheckRadio
           v-model="form.remember"
           name="remember"
-          label="Remember"
+          label="Nhớ tài khoản"
           :input-value="true"
         />
 
         <template #footer>
           <BaseButtons>
-            <BaseButton type="submit" color="info" label="Login" />
-            <BaseButton to="/" color="info" outline label="Back" />
+            <BaseButton type="submit" color="info" label="Đăng nhập" />
+            <BaseButton to="/" color="info" outline label="Quay lại" />
           </BaseButtons>
         </template>
       </CardBox>
