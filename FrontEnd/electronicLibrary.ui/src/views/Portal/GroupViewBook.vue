@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>Sách có lượt xem nhiều nhất</div>
+  <div class="py-4">
+    <div class="text-xl font-semibold pb-2">Sách có lượt xem nhiều nhất</div>
     <Carousel v-bind="settings" :breakpoints="breakpoints">
       <Slide v-for="slide in 10" :key="slide">
         <CardBook />

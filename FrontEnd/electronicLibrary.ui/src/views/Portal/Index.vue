@@ -15,7 +15,7 @@
     </div>
     <!-- Danh sách nhóm loại sách -->
     <div class="list-bookGroup container-portal">
-      <el-dropdown>
+      <!-- <el-dropdown>
         <span class="el-dropdown-link">
           <div>
             <img src="@/assets/icons/ThreeLine.svg" />
@@ -28,7 +28,7 @@
             }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
-      </el-dropdown>
+      </el-dropdown> -->
     </div>
     <div>
       <img src="@/assets/image/BannerDefault.png" />
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="container-portal">
-      <GroupViewBook />
+      <GroupViewBook v-for="item in 5"/>
     </div>
   </div>
 </template>
