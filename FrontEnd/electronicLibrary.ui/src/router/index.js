@@ -68,6 +68,14 @@ const routes = [
     path: '/portal',
     name: 'portal',
     component: () => import('@/views/Portal/Index.vue')
+  },
+  {
+    meta: {
+      title: 'Cổng bạn đọc'
+    },
+    path: '/book-view',
+    name: 'bookView',
+    component: () => import('@/views/Portal/ViewBook.vue')
   }
 ]
 

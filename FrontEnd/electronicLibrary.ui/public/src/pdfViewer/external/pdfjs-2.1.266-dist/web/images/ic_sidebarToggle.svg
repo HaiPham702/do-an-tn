@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_57040" data-name="Group 57040" transform="translate(-627 -717)">
+    <rect id="Rectangle_30017" data-name="Rectangle 30017" width="24" height="24" transform="translate(627 717)" fill="#fff" opacity="0"/>
+    <g id="Group_57043" data-name="Group 57043" transform="translate(626.75 717.09)">
+      <g id="Layer_2" data-name="Layer 2">
+        <path id="Path_145347" data-name="Path 145347" d="M20.75,7.41h-13a1,1,0,0,1,0-2h13a1,1,0,0,1,0,2Z" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+        <circle id="Ellipse_5638" data-name="Ellipse 5638" cx="1.5" cy="1.5" r="1.5" transform="translate(2.25 4.91)" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+        <g id="Group_57044" data-name="Group 57044">
+          <path id="Path_145348" data-name="Path 145348" d="M20.75,13h-13a1,1,0,0,1,0-2h13a1,1,0,0,1,0,2Z" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+          <circle id="Ellipse_5639" data-name="Ellipse 5639" cx="1.5" cy="1.5" r="1.5" transform="translate(2.25 10.5)" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+          <path id="Path_145349" data-name="Path 145349" d="M20.75,18.59h-13a1,1,0,0,1,0-2h13a1,1,0,0,1,0,2Z" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+          <circle id="Ellipse_5640" data-name="Ellipse 5640" cx="1.5" cy="1.5" r="1.5" transform="translate(2.25 16.09)" fill="#707070" stroke="#fff" stroke-width="0.3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

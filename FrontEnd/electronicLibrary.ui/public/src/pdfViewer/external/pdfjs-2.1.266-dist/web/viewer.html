@@ -1,383 +1,2315 @@
-<!DOCTYPE html>
-<!--
-Copyright 2012 Mozilla Foundation
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-Adobe CMap resources are covered by their own copyright but the same license:
-~
-    Copyright 1990-2015 Adobe Systems Incorporated.
-   
-See https://github.com/adobe-type-tools/cmap-resources
--->
-<html dir="ltr" mozdisallowselectionprint>
+<html dir="ltr" mozdisallowselectionprint="">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google" content="notranslate" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>PDF.js viewer</title>
+    <link rel="stylesheet" href="viewer.css?ver=1.1" />
 
-
-    <link rel="stylesheet" href="viewer.css">
-
-
-<!-- This snippet is used in production (included from viewer.html) -->
-<link rel="resource" type="application/l10n" href="locale/locale.properties">
-<script src="../build/pdf.js"></script>
-
-
-    <script src="viewer.js"></script>
-
+    <link rel="resource" type="application/l10n" href="locale/locale.properties" />
+    <script src="../build/pdf.js" type="text/javascript"></script>
+    <script src="viewer.js?ver=1.6" type="text/javascript"></script>
     <!-- $FB: additional files included -->
-    <script src="../../jquery-3.4.1.min.js"></script>
-    <script src="../../turn.min.js"></script>
-    <link rel="stylesheet" href="../../../pdf-turn/pdf-turn.css">
-    <script src="../../../pdf-turn/pdf-turn.js"></script>
-
+    <script src="../../jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="../../turn.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../../pdf-turn/pdf-turn.css" />
+    <script src="../../../pdf-turn/pdf-turn.js?ver=1.4" type="text/javascript"></script>
   </head>
-
   <body tabindex="1" class="loadingInProgress">
     <div id="outerContainer">
-
       <div id="sidebarContainer">
-        <div id="toolbarSidebar">
-          <div class="splitToolbarButton toggled">
-            <button id="viewThumbnail" class="toolbarButton toggled" title="Show Thumbnails" tabindex="2" data-l10n-id="thumbs">
-               <span data-l10n-id="thumbs_label">Thumbnails</span>
-            </button>
-            <button id="viewOutline" class="toolbarButton" title="Show Document Outline (double-click to expand/collapse all items)" tabindex="3" data-l10n-id="document_outline">
-               <span data-l10n-id="document_outline_label">Document Outline</span>
-            </button>
-            <button id="viewAttachments" class="toolbarButton" title="Show Attachments" tabindex="4" data-l10n-id="attachments">
-               <span data-l10n-id="attachments_label">Attachments</span>
-            </button>
-          </div>
-        </div>
         <div id="sidebarContent">
           <div id="thumbnailView">
+            <a href="#page=1" title="Page 1"
+              ><div class="thumbnail selected" data-page-number="1">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">1</div>
+              </div></a
+            ><a href="#page=2" title="Page 2"
+              ><div class="thumbnail" data-page-number="2">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">2</div>
+              </div></a
+            ><a href="#page=3" title="Page 3"
+              ><div class="thumbnail" data-page-number="3">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">3</div>
+              </div></a
+            ><a href="#page=4" title="Page 4"
+              ><div class="thumbnail" data-page-number="4">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">4</div>
+              </div></a
+            ><a href="#page=5" title="Page 5"
+              ><div class="thumbnail" data-page-number="5">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">5</div>
+              </div></a
+            ><a href="#page=6" title="Page 6"
+              ><div class="thumbnail" data-page-number="6">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">6</div>
+              </div></a
+            ><a href="#page=7" title="Page 7"
+              ><div class="thumbnail" data-page-number="7">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">7</div>
+              </div></a
+            ><a href="#page=8" title="Page 8"
+              ><div class="thumbnail" data-page-number="8">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">8</div>
+              </div></a
+            ><a href="#page=9" title="Page 9"
+              ><div class="thumbnail" data-page-number="9">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">9</div>
+              </div></a
+            ><a href="#page=10" title="Page 10"
+              ><div class="thumbnail" data-page-number="10">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">10</div>
+              </div></a
+            ><a href="#page=11" title="Page 11"
+              ><div class="thumbnail" data-page-number="11">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">11</div>
+              </div></a
+            ><a href="#page=12" title="Page 12"
+              ><div class="thumbnail" data-page-number="12">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">12</div>
+              </div></a
+            ><a href="#page=13" title="Page 13"
+              ><div class="thumbnail" data-page-number="13">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">13</div>
+              </div></a
+            ><a href="#page=14" title="Page 14"
+              ><div class="thumbnail" data-page-number="14">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">14</div>
+              </div></a
+            ><a href="#page=15" title="Page 15"
+              ><div class="thumbnail" data-page-number="15">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">15</div>
+              </div></a
+            ><a href="#page=16" title="Page 16"
+              ><div class="thumbnail" data-page-number="16">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">16</div>
+              </div></a
+            ><a href="#page=17" title="Page 17"
+              ><div class="thumbnail" data-page-number="17">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">17</div>
+              </div></a
+            ><a href="#page=18" title="Page 18"
+              ><div class="thumbnail" data-page-number="18">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">18</div>
+              </div></a
+            ><a href="#page=19" title="Page 19"
+              ><div class="thumbnail" data-page-number="19">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">19</div>
+              </div></a
+            ><a href="#page=20" title="Page 20"
+              ><div class="thumbnail" data-page-number="20">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">20</div>
+              </div></a
+            ><a href="#page=21" title="Page 21"
+              ><div class="thumbnail" data-page-number="21">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">21</div>
+              </div></a
+            ><a href="#page=22" title="Page 22"
+              ><div class="thumbnail" data-page-number="22">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">22</div>
+              </div></a
+            ><a href="#page=23" title="Page 23"
+              ><div class="thumbnail" data-page-number="23">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">23</div>
+              </div></a
+            ><a href="#page=24" title="Page 24"
+              ><div class="thumbnail" data-page-number="24">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">24</div>
+              </div></a
+            ><a href="#page=25" title="Page 25"
+              ><div class="thumbnail" data-page-number="25">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">25</div>
+              </div></a
+            ><a href="#page=26" title="Page 26"
+              ><div class="thumbnail" data-page-number="26">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">26</div>
+              </div></a
+            ><a href="#page=27" title="Page 27"
+              ><div class="thumbnail" data-page-number="27">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">27</div>
+              </div></a
+            ><a href="#page=28" title="Page 28"
+              ><div class="thumbnail" data-page-number="28">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">28</div>
+              </div></a
+            ><a href="#page=29" title="Page 29"
+              ><div class="thumbnail" data-page-number="29">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">29</div>
+              </div></a
+            ><a href="#page=30" title="Page 30"
+              ><div class="thumbnail" data-page-number="30">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">30</div>
+              </div></a
+            ><a href="#page=31" title="Page 31"
+              ><div class="thumbnail" data-page-number="31">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">31</div>
+              </div></a
+            ><a href="#page=32" title="Page 32"
+              ><div class="thumbnail" data-page-number="32">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">32</div>
+              </div></a
+            ><a href="#page=33" title="Page 33"
+              ><div class="thumbnail" data-page-number="33">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">33</div>
+              </div></a
+            ><a href="#page=34" title="Page 34"
+              ><div class="thumbnail" data-page-number="34">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">34</div>
+              </div></a
+            ><a href="#page=35" title="Page 35"
+              ><div class="thumbnail" data-page-number="35">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">35</div>
+              </div></a
+            ><a href="#page=36" title="Page 36"
+              ><div class="thumbnail" data-page-number="36">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">36</div>
+              </div></a
+            ><a href="#page=37" title="Page 37"
+              ><div class="thumbnail" data-page-number="37">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">37</div>
+              </div></a
+            ><a href="#page=38" title="Page 38"
+              ><div class="thumbnail" data-page-number="38">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">38</div>
+              </div></a
+            ><a href="#page=39" title="Page 39"
+              ><div class="thumbnail" data-page-number="39">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">39</div>
+              </div></a
+            ><a href="#page=40" title="Page 40"
+              ><div class="thumbnail" data-page-number="40">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">40</div>
+              </div></a
+            ><a href="#page=41" title="Page 41"
+              ><div class="thumbnail" data-page-number="41">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">41</div>
+              </div></a
+            ><a href="#page=42" title="Page 42"
+              ><div class="thumbnail" data-page-number="42">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">42</div>
+              </div></a
+            ><a href="#page=43" title="Page 43"
+              ><div class="thumbnail" data-page-number="43">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">43</div>
+              </div></a
+            ><a href="#page=44" title="Page 44"
+              ><div class="thumbnail" data-page-number="44">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">44</div>
+              </div></a
+            ><a href="#page=45" title="Page 45"
+              ><div class="thumbnail" data-page-number="45">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">45</div>
+              </div></a
+            ><a href="#page=46" title="Page 46"
+              ><div class="thumbnail" data-page-number="46">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">46</div>
+              </div></a
+            ><a href="#page=47" title="Page 47"
+              ><div class="thumbnail" data-page-number="47">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">47</div>
+              </div></a
+            ><a href="#page=48" title="Page 48"
+              ><div class="thumbnail" data-page-number="48">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">48</div>
+              </div></a
+            ><a href="#page=49" title="Page 49"
+              ><div class="thumbnail" data-page-number="49">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">49</div>
+              </div></a
+            ><a href="#page=50" title="Page 50"
+              ><div class="thumbnail" data-page-number="50">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">50</div>
+              </div></a
+            ><a href="#page=51" title="Page 51"
+              ><div class="thumbnail" data-page-number="51">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">51</div>
+              </div></a
+            ><a href="#page=52" title="Page 52"
+              ><div class="thumbnail" data-page-number="52">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">52</div>
+              </div></a
+            ><a href="#page=53" title="Page 53"
+              ><div class="thumbnail" data-page-number="53">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">53</div>
+              </div></a
+            ><a href="#page=54" title="Page 54"
+              ><div class="thumbnail" data-page-number="54">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">54</div>
+              </div></a
+            ><a href="#page=55" title="Page 55"
+              ><div class="thumbnail" data-page-number="55">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">55</div>
+              </div></a
+            ><a href="#page=56" title="Page 56"
+              ><div class="thumbnail" data-page-number="56">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">56</div>
+              </div></a
+            ><a href="#page=57" title="Page 57"
+              ><div class="thumbnail" data-page-number="57">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">57</div>
+              </div></a
+            ><a href="#page=58" title="Page 58"
+              ><div class="thumbnail" data-page-number="58">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">58</div>
+              </div></a
+            ><a href="#page=59" title="Page 59"
+              ><div class="thumbnail" data-page-number="59">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">59</div>
+              </div></a
+            ><a href="#page=60" title="Page 60"
+              ><div class="thumbnail" data-page-number="60">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">60</div>
+              </div></a
+            ><a href="#page=61" title="Page 61"
+              ><div class="thumbnail" data-page-number="61">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">61</div>
+              </div></a
+            ><a href="#page=62" title="Page 62"
+              ><div class="thumbnail" data-page-number="62">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">62</div>
+              </div></a
+            ><a href="#page=63" title="Page 63"
+              ><div class="thumbnail" data-page-number="63">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">63</div>
+              </div></a
+            ><a href="#page=64" title="Page 64"
+              ><div class="thumbnail" data-page-number="64">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">64</div>
+              </div></a
+            ><a href="#page=65" title="Page 65"
+              ><div class="thumbnail" data-page-number="65">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">65</div>
+              </div></a
+            ><a href="#page=66" title="Page 66"
+              ><div class="thumbnail" data-page-number="66">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">66</div>
+              </div></a
+            ><a href="#page=67" title="Page 67"
+              ><div class="thumbnail" data-page-number="67">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">67</div>
+              </div></a
+            ><a href="#page=68" title="Page 68"
+              ><div class="thumbnail" data-page-number="68">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">68</div>
+              </div></a
+            ><a href="#page=69" title="Page 69"
+              ><div class="thumbnail" data-page-number="69">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">69</div>
+              </div></a
+            ><a href="#page=70" title="Page 70"
+              ><div class="thumbnail" data-page-number="70">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">70</div>
+              </div></a
+            ><a href="#page=71" title="Page 71"
+              ><div class="thumbnail" data-page-number="71">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">71</div>
+              </div></a
+            ><a href="#page=72" title="Page 72"
+              ><div class="thumbnail" data-page-number="72">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">72</div>
+              </div></a
+            ><a href="#page=73" title="Page 73"
+              ><div class="thumbnail" data-page-number="73">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">73</div>
+              </div></a
+            ><a href="#page=74" title="Page 74"
+              ><div class="thumbnail" data-page-number="74">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">74</div>
+              </div></a
+            ><a href="#page=75" title="Page 75"
+              ><div class="thumbnail" data-page-number="75">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">75</div>
+              </div></a
+            ><a href="#page=76" title="Page 76"
+              ><div class="thumbnail" data-page-number="76">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">76</div>
+              </div></a
+            ><a href="#page=77" title="Page 77"
+              ><div class="thumbnail" data-page-number="77">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">77</div>
+              </div></a
+            ><a href="#page=78" title="Page 78"
+              ><div class="thumbnail" data-page-number="78">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">78</div>
+              </div></a
+            ><a href="#page=79" title="Page 79"
+              ><div class="thumbnail" data-page-number="79">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">79</div>
+              </div></a
+            ><a href="#page=80" title="Page 80"
+              ><div class="thumbnail" data-page-number="80">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">80</div>
+              </div></a
+            ><a href="#page=81" title="Page 81"
+              ><div class="thumbnail" data-page-number="81">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">81</div>
+              </div></a
+            ><a href="#page=82" title="Page 82"
+              ><div class="thumbnail" data-page-number="82">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">82</div>
+              </div></a
+            ><a href="#page=83" title="Page 83"
+              ><div class="thumbnail" data-page-number="83">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">83</div>
+              </div></a
+            ><a href="#page=84" title="Page 84"
+              ><div class="thumbnail" data-page-number="84">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">84</div>
+              </div></a
+            ><a href="#page=85" title="Page 85"
+              ><div class="thumbnail" data-page-number="85">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">85</div>
+              </div></a
+            ><a href="#page=86" title="Page 86"
+              ><div class="thumbnail" data-page-number="86">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">86</div>
+              </div></a
+            ><a href="#page=87" title="Page 87"
+              ><div class="thumbnail" data-page-number="87">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">87</div>
+              </div></a
+            ><a href="#page=88" title="Page 88"
+              ><div class="thumbnail" data-page-number="88">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">88</div>
+              </div></a
+            ><a href="#page=89" title="Page 89"
+              ><div class="thumbnail" data-page-number="89">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">89</div>
+              </div></a
+            ><a href="#page=90" title="Page 90"
+              ><div class="thumbnail" data-page-number="90">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">90</div>
+              </div></a
+            ><a href="#page=91" title="Page 91"
+              ><div class="thumbnail" data-page-number="91">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">91</div>
+              </div></a
+            ><a href="#page=92" title="Page 92"
+              ><div class="thumbnail" data-page-number="92">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">92</div>
+              </div></a
+            ><a href="#page=93" title="Page 93"
+              ><div class="thumbnail" data-page-number="93">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">93</div>
+              </div></a
+            ><a href="#page=94" title="Page 94"
+              ><div class="thumbnail" data-page-number="94">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">94</div>
+              </div></a
+            ><a href="#page=95" title="Page 95"
+              ><div class="thumbnail" data-page-number="95">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">95</div>
+              </div></a
+            ><a href="#page=96" title="Page 96"
+              ><div class="thumbnail" data-page-number="96">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">96</div>
+              </div></a
+            ><a href="#page=97" title="Page 97"
+              ><div class="thumbnail" data-page-number="97">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">97</div>
+              </div></a
+            ><a href="#page=98" title="Page 98"
+              ><div class="thumbnail" data-page-number="98">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">98</div>
+              </div></a
+            ><a href="#page=99" title="Page 99"
+              ><div class="thumbnail" data-page-number="99">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">99</div>
+              </div></a
+            ><a href="#page=100" title="Page 100"
+              ><div class="thumbnail" data-page-number="100">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">100</div>
+              </div></a
+            ><a href="#page=101" title="Page 101"
+              ><div class="thumbnail" data-page-number="101">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">101</div>
+              </div></a
+            ><a href="#page=102" title="Page 102"
+              ><div class="thumbnail" data-page-number="102">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">102</div>
+              </div></a
+            ><a href="#page=103" title="Page 103"
+              ><div class="thumbnail" data-page-number="103">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">103</div>
+              </div></a
+            ><a href="#page=104" title="Page 104"
+              ><div class="thumbnail" data-page-number="104">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">104</div>
+              </div></a
+            ><a href="#page=105" title="Page 105"
+              ><div class="thumbnail" data-page-number="105">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">105</div>
+              </div></a
+            ><a href="#page=106" title="Page 106"
+              ><div class="thumbnail" data-page-number="106">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">106</div>
+              </div></a
+            ><a href="#page=107" title="Page 107"
+              ><div class="thumbnail" data-page-number="107">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">107</div>
+              </div></a
+            ><a href="#page=108" title="Page 108"
+              ><div class="thumbnail" data-page-number="108">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">108</div>
+              </div></a
+            ><a href="#page=109" title="Page 109"
+              ><div class="thumbnail" data-page-number="109">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">109</div>
+              </div></a
+            ><a href="#page=110" title="Page 110"
+              ><div class="thumbnail" data-page-number="110">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">110</div>
+              </div></a
+            ><a href="#page=111" title="Page 111"
+              ><div class="thumbnail" data-page-number="111">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">111</div>
+              </div></a
+            ><a href="#page=112" title="Page 112"
+              ><div class="thumbnail" data-page-number="112">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">112</div>
+              </div></a
+            ><a href="#page=113" title="Page 113"
+              ><div class="thumbnail" data-page-number="113">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">113</div>
+              </div></a
+            ><a href="#page=114" title="Page 114"
+              ><div class="thumbnail" data-page-number="114">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">114</div>
+              </div></a
+            ><a href="#page=115" title="Page 115"
+              ><div class="thumbnail" data-page-number="115">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">115</div>
+              </div></a
+            ><a href="#page=116" title="Page 116"
+              ><div class="thumbnail" data-page-number="116">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">116</div>
+              </div></a
+            ><a href="#page=117" title="Page 117"
+              ><div class="thumbnail" data-page-number="117">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">117</div>
+              </div></a
+            ><a href="#page=118" title="Page 118"
+              ><div class="thumbnail" data-page-number="118">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">118</div>
+              </div></a
+            ><a href="#page=119" title="Page 119"
+              ><div class="thumbnail" data-page-number="119">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">119</div>
+              </div></a
+            ><a href="#page=120" title="Page 120"
+              ><div class="thumbnail" data-page-number="120">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">120</div>
+              </div></a
+            ><a href="#page=121" title="Page 121"
+              ><div class="thumbnail" data-page-number="121">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">121</div>
+              </div></a
+            ><a href="#page=122" title="Page 122"
+              ><div class="thumbnail" data-page-number="122">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">122</div>
+              </div></a
+            ><a href="#page=123" title="Page 123"
+              ><div class="thumbnail" data-page-number="123">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">123</div>
+              </div></a
+            ><a href="#page=124" title="Page 124"
+              ><div class="thumbnail" data-page-number="124">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">124</div>
+              </div></a
+            ><a href="#page=125" title="Page 125"
+              ><div class="thumbnail" data-page-number="125">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">125</div>
+              </div></a
+            ><a href="#page=126" title="Page 126"
+              ><div class="thumbnail" data-page-number="126">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">126</div>
+              </div></a
+            ><a href="#page=127" title="Page 127"
+              ><div class="thumbnail" data-page-number="127">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">127</div>
+              </div></a
+            ><a href="#page=128" title="Page 128"
+              ><div class="thumbnail" data-page-number="128">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">128</div>
+              </div></a
+            ><a href="#page=129" title="Page 129"
+              ><div class="thumbnail" data-page-number="129">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">129</div>
+              </div></a
+            ><a href="#page=130" title="Page 130"
+              ><div class="thumbnail" data-page-number="130">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">130</div>
+              </div></a
+            ><a href="#page=131" title="Page 131"
+              ><div class="thumbnail" data-page-number="131">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">131</div>
+              </div></a
+            ><a href="#page=132" title="Page 132"
+              ><div class="thumbnail" data-page-number="132">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">132</div>
+              </div></a
+            ><a href="#page=133" title="Page 133"
+              ><div class="thumbnail" data-page-number="133">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">133</div>
+              </div></a
+            ><a href="#page=134" title="Page 134"
+              ><div class="thumbnail" data-page-number="134">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">134</div>
+              </div></a
+            ><a href="#page=135" title="Page 135"
+              ><div class="thumbnail" data-page-number="135">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">135</div>
+              </div></a
+            ><a href="#page=136" title="Page 136"
+              ><div class="thumbnail" data-page-number="136">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">136</div>
+              </div></a
+            ><a href="#page=137" title="Page 137"
+              ><div class="thumbnail" data-page-number="137">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">137</div>
+              </div></a
+            ><a href="#page=138" title="Page 138"
+              ><div class="thumbnail" data-page-number="138">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">138</div>
+              </div></a
+            ><a href="#page=139" title="Page 139"
+              ><div class="thumbnail" data-page-number="139">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">139</div>
+              </div></a
+            ><a href="#page=140" title="Page 140"
+              ><div class="thumbnail" data-page-number="140">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">140</div>
+              </div></a
+            ><a href="#page=141" title="Page 141"
+              ><div class="thumbnail" data-page-number="141">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">141</div>
+              </div></a
+            ><a href="#page=142" title="Page 142"
+              ><div class="thumbnail" data-page-number="142">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">142</div>
+              </div></a
+            ><a href="#page=143" title="Page 143"
+              ><div class="thumbnail" data-page-number="143">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">143</div>
+              </div></a
+            ><a href="#page=144" title="Page 144"
+              ><div class="thumbnail" data-page-number="144">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">144</div>
+              </div></a
+            ><a href="#page=145" title="Page 145"
+              ><div class="thumbnail" data-page-number="145">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">145</div>
+              </div></a
+            ><a href="#page=146" title="Page 146"
+              ><div class="thumbnail" data-page-number="146">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">146</div>
+              </div></a
+            ><a href="#page=147" title="Page 147"
+              ><div class="thumbnail" data-page-number="147">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">147</div>
+              </div></a
+            ><a href="#page=148" title="Page 148"
+              ><div class="thumbnail" data-page-number="148">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">148</div>
+              </div></a
+            ><a href="#page=149" title="Page 149"
+              ><div class="thumbnail" data-page-number="149">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">149</div>
+              </div></a
+            ><a href="#page=150" title="Page 150"
+              ><div class="thumbnail" data-page-number="150">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">150</div>
+              </div></a
+            ><a href="#page=151" title="Page 151"
+              ><div class="thumbnail" data-page-number="151">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">151</div>
+              </div></a
+            ><a href="#page=152" title="Page 152"
+              ><div class="thumbnail" data-page-number="152">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">152</div>
+              </div></a
+            ><a href="#page=153" title="Page 153"
+              ><div class="thumbnail" data-page-number="153">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">153</div>
+              </div></a
+            ><a href="#page=154" title="Page 154"
+              ><div class="thumbnail" data-page-number="154">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">154</div>
+              </div></a
+            ><a href="#page=155" title="Page 155"
+              ><div class="thumbnail" data-page-number="155">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">155</div>
+              </div></a
+            ><a href="#page=156" title="Page 156"
+              ><div class="thumbnail" data-page-number="156">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">156</div>
+              </div></a
+            ><a href="#page=157" title="Page 157"
+              ><div class="thumbnail" data-page-number="157">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">157</div>
+              </div></a
+            ><a href="#page=158" title="Page 158"
+              ><div class="thumbnail" data-page-number="158">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">158</div>
+              </div></a
+            ><a href="#page=159" title="Page 159"
+              ><div class="thumbnail" data-page-number="159">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">159</div>
+              </div></a
+            ><a href="#page=160" title="Page 160"
+              ><div class="thumbnail" data-page-number="160">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">160</div>
+              </div></a
+            ><a href="#page=161" title="Page 161"
+              ><div class="thumbnail" data-page-number="161">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">161</div>
+              </div></a
+            ><a href="#page=162" title="Page 162"
+              ><div class="thumbnail" data-page-number="162">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">162</div>
+              </div></a
+            ><a href="#page=163" title="Page 163"
+              ><div class="thumbnail" data-page-number="163">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">163</div>
+              </div></a
+            ><a href="#page=164" title="Page 164"
+              ><div class="thumbnail" data-page-number="164">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">164</div>
+              </div></a
+            ><a href="#page=165" title="Page 165"
+              ><div class="thumbnail" data-page-number="165">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">165</div>
+              </div></a
+            ><a href="#page=166" title="Page 166"
+              ><div class="thumbnail" data-page-number="166">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">166</div>
+              </div></a
+            ><a href="#page=167" title="Page 167"
+              ><div class="thumbnail" data-page-number="167">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">167</div>
+              </div></a
+            ><a href="#page=168" title="Page 168"
+              ><div class="thumbnail" data-page-number="168">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">168</div>
+              </div></a
+            ><a href="#page=169" title="Page 169"
+              ><div class="thumbnail" data-page-number="169">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">169</div>
+              </div></a
+            ><a href="#page=170" title="Page 170"
+              ><div class="thumbnail" data-page-number="170">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">170</div>
+              </div></a
+            ><a href="#page=171" title="Page 171"
+              ><div class="thumbnail" data-page-number="171">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">171</div>
+              </div></a
+            ><a href="#page=172" title="Page 172"
+              ><div class="thumbnail" data-page-number="172">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">172</div>
+              </div></a
+            ><a href="#page=173" title="Page 173"
+              ><div class="thumbnail" data-page-number="173">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">173</div>
+              </div></a
+            ><a href="#page=174" title="Page 174"
+              ><div class="thumbnail" data-page-number="174">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">174</div>
+              </div></a
+            ><a href="#page=175" title="Page 175"
+              ><div class="thumbnail" data-page-number="175">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">175</div>
+              </div></a
+            ><a href="#page=176" title="Page 176"
+              ><div class="thumbnail" data-page-number="176">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">176</div>
+              </div></a
+            ><a href="#page=177" title="Page 177"
+              ><div class="thumbnail" data-page-number="177">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">177</div>
+              </div></a
+            ><a href="#page=178" title="Page 178"
+              ><div class="thumbnail" data-page-number="178">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">178</div>
+              </div></a
+            ><a href="#page=179" title="Page 179"
+              ><div class="thumbnail" data-page-number="179">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">179</div>
+              </div></a
+            ><a href="#page=180" title="Page 180"
+              ><div class="thumbnail" data-page-number="180">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">180</div>
+              </div></a
+            ><a href="#page=181" title="Page 181"
+              ><div class="thumbnail" data-page-number="181">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">181</div>
+              </div></a
+            ><a href="#page=182" title="Page 182"
+              ><div class="thumbnail" data-page-number="182">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">182</div>
+              </div></a
+            ><a href="#page=183" title="Page 183"
+              ><div class="thumbnail" data-page-number="183">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">183</div>
+              </div></a
+            ><a href="#page=184" title="Page 184"
+              ><div class="thumbnail" data-page-number="184">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">184</div>
+              </div></a
+            ><a href="#page=185" title="Page 185"
+              ><div class="thumbnail" data-page-number="185">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">185</div>
+              </div></a
+            ><a href="#page=186" title="Page 186"
+              ><div class="thumbnail" data-page-number="186">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">186</div>
+              </div></a
+            ><a href="#page=187" title="Page 187"
+              ><div class="thumbnail" data-page-number="187">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">187</div>
+              </div></a
+            ><a href="#page=188" title="Page 188"
+              ><div class="thumbnail" data-page-number="188">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">188</div>
+              </div></a
+            ><a href="#page=189" title="Page 189"
+              ><div class="thumbnail" data-page-number="189">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">189</div>
+              </div></a
+            ><a href="#page=190" title="Page 190"
+              ><div class="thumbnail" data-page-number="190">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">190</div>
+              </div></a
+            ><a href="#page=191" title="Page 191"
+              ><div class="thumbnail" data-page-number="191">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">191</div>
+              </div></a
+            ><a href="#page=192" title="Page 192"
+              ><div class="thumbnail" data-page-number="192">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">192</div>
+              </div></a
+            ><a href="#page=193" title="Page 193"
+              ><div class="thumbnail" data-page-number="193">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">193</div>
+              </div></a
+            ><a href="#page=194" title="Page 194"
+              ><div class="thumbnail" data-page-number="194">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">194</div>
+              </div></a
+            ><a href="#page=195" title="Page 195"
+              ><div class="thumbnail" data-page-number="195">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">195</div>
+              </div></a
+            ><a href="#page=196" title="Page 196"
+              ><div class="thumbnail" data-page-number="196">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">196</div>
+              </div></a
+            ><a href="#page=197" title="Page 197"
+              ><div class="thumbnail" data-page-number="197">
+                <div class="thumbnailSelectionRing" style="width: 100px; height: 140px"></div>
+                <div class="page-num">197</div>
+              </div></a
+            >
           </div>
-          <div id="outlineView" class="hidden">
-          </div>
-          <div id="attachmentsView" class="hidden">
-          </div>
+          <div id="outlineView" class="hidden"></div>
+          <div id="attachmentsView" class="hidden"></div>
         </div>
-        <div id="sidebarResizer" class="hidden"></div>
-      </div>  <!-- sidebarContainer -->
+        <div id="sidebarResizer" class=""></div>
+      </div>
 
       <div id="mainContainer">
         <div class="findbar hidden doorHanger" id="findbar">
           <div id="findbarInputContainer">
-            <input id="findInput" class="toolbarField" title="Find" placeholder="Find in document…" tabindex="91" data-l10n-id="find_input">
+            <input
+              id="findInput"
+              class="toolbarField"
+              title="Find"
+              placeholder="Find in document…"
+              tabindex="91"
+              data-l10n-id="find_input"
+            />
             <div class="splitToolbarButton">
-              <button id="findPrevious" class="toolbarButton findPrevious" title="Find the previous occurrence of the phrase" tabindex="92" data-l10n-id="find_previous">
+              <button
+                id="findPrevious"
+                class="toolbarButton findPrevious"
+                title="Find the previous occurrence of the phrase"
+                tabindex="92"
+                data-l10n-id="find_previous"
+              >
                 <span data-l10n-id="find_previous_label">Previous</span>
               </button>
               <div class="splitToolbarButtonSeparator"></div>
-              <button id="findNext" class="toolbarButton findNext" title="Find the next occurrence of the phrase" tabindex="93" data-l10n-id="find_next">
+              <button
+                id="findNext"
+                class="toolbarButton findNext"
+                title="Find the next occurrence of the phrase"
+                tabindex="93"
+                data-l10n-id="find_next"
+              >
                 <span data-l10n-id="find_next_label">Next</span>
               </button>
             </div>
           </div>
-
           <div id="findbarOptionsOneContainer">
-            <input type="checkbox" id="findHighlightAll" class="toolbarField" tabindex="94">
-            <label for="findHighlightAll" class="toolbarLabel" data-l10n-id="find_highlight">Highlight all</label>
-            <input type="checkbox" id="findMatchCase" class="toolbarField" tabindex="95">
-            <label for="findMatchCase" class="toolbarLabel" data-l10n-id="find_match_case_label">Match case</label>
+            <input type="checkbox" id="findHighlightAll" class="toolbarField" tabindex="94" />
+            <label for="findHighlightAll" class="toolbarLabel" data-l10n-id="find_highlight"
+              >Highlight all</label
+            >
+            <input type="checkbox" id="findMatchCase" class="toolbarField" tabindex="95" />
+            <label for="findMatchCase" class="toolbarLabel" data-l10n-id="find_match_case_label"
+              >Match case</label
+            >
           </div>
           <div id="findbarOptionsTwoContainer">
-            <input type="checkbox" id="findEntireWord" class="toolbarField" tabindex="96">
-            <label for="findEntireWord" class="toolbarLabel" data-l10n-id="find_entire_word_label">Whole words</label>
+            <input type="checkbox" id="findEntireWord" class="toolbarField" tabindex="96" />
+            <label for="findEntireWord" class="toolbarLabel" data-l10n-id="find_entire_word_label"
+              >Whole words</label
+            >
             <span id="findResultsCount" class="toolbarLabel hidden"></span>
           </div>
-
           <div id="findbarMessageContainer">
             <span id="findMsg" class="toolbarLabel"></span>
           </div>
-        </div>  <!-- findbar -->
+        </div>
 
         <div id="secondaryToolbar" class="secondaryToolbar hidden doorHangerRight">
           <div id="secondaryToolbarButtonContainer">
-            <button id="secondaryPresentationMode" class="secondaryToolbarButton presentationMode visibleLargeView" title="Switch to Presentation Mode" tabindex="51" data-l10n-id="presentation_mode">
+            <button
+              id="secondaryPresentationMode"
+              class="secondaryToolbarButton presentationMode visibleLargeView"
+              title="Switch to Presentation Mode"
+              tabindex="51"
+              data-l10n-id="presentation_mode"
+            >
               <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
             </button>
-
-            <button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" title="Open File" tabindex="52" data-l10n-id="open_file">
+            <button
+              id="secondaryOpenFile"
+              class="secondaryToolbarButton openFile visibleLargeView"
+              title="Open File"
+              tabindex="52"
+              data-l10n-id="open_file"
+            >
               <span data-l10n-id="open_file_label">Open</span>
             </button>
-
-            <button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" title="Print" tabindex="53" data-l10n-id="print">
+            <button
+              id="secondaryPrint"
+              class="secondaryToolbarButton print visibleMediumView"
+              title="Print"
+              tabindex="53"
+              data-l10n-id="print"
+            >
               <span data-l10n-id="print_label">Print</span>
             </button>
-
-            <button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" title="Download" tabindex="54" data-l10n-id="download">
+            <button
+              id="secondaryDownload"
+              class="secondaryToolbarButton download visibleMediumView"
+              title="Download"
+              tabindex="54"
+              data-l10n-id="download"
+            >
               <span data-l10n-id="download_label">Download</span>
             </button>
-
-            <a href="#" id="secondaryViewBookmark" class="secondaryToolbarButton bookmark visibleSmallView" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark">
+            <a
+              href="#page=1&amp;zoom=page-fit,0,792"
+              id="secondaryViewBookmark"
+              class="secondaryToolbarButton bookmark visibleSmallView"
+              title="Current view (copy or open in new window)"
+              tabindex="55"
+              data-l10n-id="bookmark"
+            >
               <span data-l10n-id="bookmark_label">Current View</span>
             </a>
-
             <div class="horizontalToolbarSeparator visibleLargeView"></div>
-
-            <button id="firstPage" class="secondaryToolbarButton firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page">
+            <button
+              id="firstPage"
+              class="secondaryToolbarButton firstPage"
+              title="Go to First Page"
+              tabindex="56"
+              data-l10n-id="first_page"
+              disabled=""
+            >
               <span data-l10n-id="first_page_label">Go to First Page</span>
             </button>
-            <button id="lastPage" class="secondaryToolbarButton lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page">
+            <button
+              id="lastPage"
+              class="secondaryToolbarButton lastPage"
+              title="Go to Last Page"
+              tabindex="57"
+              data-l10n-id="last_page"
+            >
               <span data-l10n-id="last_page_label">Go to Last Page</span>
             </button>
-
             <div class="horizontalToolbarSeparator"></div>
-
-            <button id="pageRotateCw" class="secondaryToolbarButton rotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw">
-              <span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span>
-            </button>
-            <button id="pageRotateCcw" class="secondaryToolbarButton rotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw">
-              <span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span>
-            </button>
-
             <div class="horizontalToolbarSeparator"></div>
-
-            <button id="cursorSelectTool" class="secondaryToolbarButton selectTool toggled" title="Enable Text Selection Tool" tabindex="60" data-l10n-id="cursor_text_select_tool">
-              <span data-l10n-id="cursor_text_select_tool_label">Text Selection Tool</span>
-            </button>
-            <button id="cursorHandTool" class="secondaryToolbarButton handTool" title="Enable Hand Tool" tabindex="61" data-l10n-id="cursor_hand_tool">
-              <span data-l10n-id="cursor_hand_tool_label">Hand Tool</span>
-            </button>
-
             <div class="horizontalToolbarSeparator"></div>
-
-            <button id="scrollVertical" class="secondaryToolbarButton scrollModeButtons scrollVertical toggled" title="Use Vertical Scrolling" tabindex="62" data-l10n-id="scroll_vertical">
-              <span data-l10n-id="scroll_vertical_label">Vertical Scrolling</span>
-            </button>
-            <button id="scrollHorizontal" class="secondaryToolbarButton scrollModeButtons scrollHorizontal" title="Use Horizontal Scrolling" tabindex="63" data-l10n-id="scroll_horizontal">
-              <span data-l10n-id="scroll_horizontal_label">Horizontal Scrolling</span>
-            </button>
-            <button id="scrollWrapped" class="secondaryToolbarButton scrollModeButtons scrollWrapped" title="Use Wrapped Scrolling" tabindex="64" data-l10n-id="scroll_wrapped">
-              <span data-l10n-id="scroll_wrapped_label">Wrapped Scrolling</span>
-            </button>
             <!-- $FB: bookflip button -->
-            <button id="bookFlip" class="secondaryToolbarButton scrollModeButtons bookFlip" title="Use Book Flip" tabindex="65" data-l10n-id="book_flip">
+            <button
+              id="bookFlip"
+              class="secondaryToolbarButton scrollModeButtons bookFlip toggled"
+              title="Use Book Flip"
+              tabindex="65"
+              data-l10n-id="book_flip"
+            >
               <span data-l10n-id="book_flip_label">Book Flip</span>
             </button>
-
             <div class="horizontalToolbarSeparator scrollModeButtons"></div>
+            <span data-l10n-id="spread_none_label">No Spreads</span>
 
-            <button id="spreadNone" class="secondaryToolbarButton spreadModeButtons spreadNone toggled" title="Do not join page spreads" tabindex="66" data-l10n-id="spread_none">
-              <span data-l10n-id="spread_none_label">No Spreads</span>
-            </button>
-            <button id="spreadOdd" class="secondaryToolbarButton spreadModeButtons spreadOdd" title="Join page spreads starting with odd-numbered pages" tabindex="67" data-l10n-id="spread_odd">
+            <button
+              id="spreadOdd"
+              class="secondaryToolbarButton spreadModeButtons spreadOdd"
+              title="Join page spreads starting with odd-numbered pages"
+              tabindex="67"
+              data-l10n-id="spread_odd"
+              disabled=""
+            >
               <span data-l10n-id="spread_odd_label">Odd Spreads</span>
             </button>
-            <button id="spreadEven" class="secondaryToolbarButton spreadModeButtons spreadEven" title="Join page spreads starting with even-numbered pages" tabindex="68" data-l10n-id="spread_even">
-              <span data-l10n-id="spread_even_label">Even Spreads</span>
-            </button>
-
             <div class="horizontalToolbarSeparator spreadModeButtons"></div>
-
-            <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="69" data-l10n-id="document_properties">
+            <button
+              id="documentProperties"
+              class="secondaryToolbarButton documentProperties"
+              title="Document Properties…"
+              tabindex="69"
+              data-l10n-id="document_properties"
+            >
               <span data-l10n-id="document_properties_label">Document Properties…</span>
             </button>
           </div>
-        </div>  <!-- secondaryToolbar -->
+        </div>
 
         <div class="toolbar">
           <div id="toolbarContainer">
             <div id="toolbarViewer">
               <div id="toolbarViewerLeft">
-                <button id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar" tabindex="11" data-l10n-id="toggle_sidebar">
-                  <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                <button id="stopRead" class="toolbarButton" tabindex="11">
+                  <span>Thoát</span>
                 </button>
-                <div class="toolbarButtonSpacer"></div>
-                <button id="viewFind" class="toolbarButton" title="Find in Document" tabindex="12" data-l10n-id="findbar">
-                  <span data-l10n-id="findbar_label">Find</span>
+                <button id="sidebarToggle" class="toolbarButton" tabindex="11">
+                  <span>Danh sách trang</span>
                 </button>
-                <div class="splitToolbarButton hiddenSmallView">
-                  <button class="toolbarButton pageUp" title="Previous Page" id="previous" tabindex="13" data-l10n-id="previous">
-                    <span data-l10n-id="previous_label">Previous</span>
-                  </button>
-                  <div class="splitToolbarButtonSeparator"></div>
-                  <button class="toolbarButton pageDown" title="Next Page" id="next" tabindex="14" data-l10n-id="next">
-                    <span data-l10n-id="next_label">Next</span>
-                  </button>
-                </div>
-                <input type="number" id="pageNumber" class="toolbarField pageNumber" title="Page" value="1" size="4" min="1" tabindex="15" data-l10n-id="page">
-                <span id="numPages" class="toolbarLabel"></span>
+                <button
+                  id="fullScreen"
+                  class="toolbarButton fullScreen"
+                  title="Toàn màn hình"
+                  data-l10n-id="Toàn màn hình"
+                >
+                  <span>Toàn màn hình</span>
+                </button>
               </div>
               <div id="toolbarViewerRight">
-                <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
-                  <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                <button
+                  id="spreadNone"
+                  class="toolbarButton spreadMode"
+                  style="display: inline-block"
+                >
+                  <span>Trang đơn</span>
                 </button>
-
-                <button id="openFile" class="toolbarButton openFile hiddenLargeView" title="Open File" tabindex="32" data-l10n-id="open_file">
-                  <span data-l10n-id="open_file_label">Open</span>
+                <button id="spreadEven" class="toolbarButton spreadEven mr-2" style="display: none">
+                  <span>Trang đôi</span>
                 </button>
-
-                <button id="print" class="toolbarButton print hiddenMediumView" title="Print" tabindex="33" data-l10n-id="print">
-                  <span data-l10n-id="print_label">Print</span>
+                <button
+                  id="zoomOut"
+                  class="toolbarButton zoomOut"
+                  title="Thu nhỏ"
+                  tabindex="21"
+                  data-l10n-id="Thu nhỏ"
+                  disabled=""
+                >
+                  <span data-l10n-id="zoom_out_label">Thu nhỏ</span>
                 </button>
-
-                <button id="download" class="toolbarButton download hiddenMediumView" title="Download" tabindex="34" data-l10n-id="download">
-                  <span data-l10n-id="download_label">Download</span>
-                </button>
-                <a href="#" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
-                  <span data-l10n-id="bookmark_label">Current View</span>
-                </a>
-
-                <div class="verticalToolbarSeparator hiddenSmallView"></div>
-
-                <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
-                  <span data-l10n-id="tools_label">Tools</span>
+                <button
+                  id="zoomIn"
+                  class="toolbarButton zoomIn"
+                  title="Phóng to"
+                  tabindex="22"
+                  data-l10n-id="Phóng to"
+                >
+                  <span data-l10n-id="zoom_in_label">Phóng to</span>
                 </button>
               </div>
               <div id="toolbarViewerMiddle">
-                <div class="splitToolbarButton">
-                  <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="21" data-l10n-id="zoom_out">
-                    <span data-l10n-id="zoom_out_label">Zoom Out</span>
-                  </button>
-                  <div class="splitToolbarButtonSeparator"></div>
-                  <button id="zoomIn" class="toolbarButton zoomIn" title="Zoom In" tabindex="22" data-l10n-id="zoom_in">
-                    <span data-l10n-id="zoom_in_label">Zoom In</span>
-                   </button>
+                <div class="toolbarButtonSpacer"></div>
+
+                <button
+                  class="toolbarButton pageUp"
+                  title="Trang trước"
+                  id="previous"
+                  tabindex="13"
+                  data-l10n-id="previous"
+                  disabled=""
+                >
+                  <span data-l10n-id="previous_label">Trang trước</span>
+                </button>
+                <div class="pageNum-container">
+                  <input
+                    type="number"
+                    id="pageNumber"
+                    class="toolbarField pageNumber"
+                    value="1"
+                    size="4"
+                    min="1"
+                    tabindex="15"
+                    max="197"
+                  />
+                  <span id="numPages" class="toolbarLabel">/ 197</span>
                 </div>
-                <span id="scaleSelectContainer" class="dropdownToolbarButton">
-                  <select id="scaleSelect" title="Zoom" tabindex="23" data-l10n-id="zoom">
-                    <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
-                    <option id="pageActualOption" title="" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
-                    <option id="pageFitOption" title="" value="page-fit" data-l10n-id="page_scale_fit">Page Fit</option>
-                    <option id="pageWidthOption" title="" value="page-width" data-l10n-id="page_scale_width">Page Width</option>
-                    <option id="customScaleOption" title="" value="custom" disabled="disabled" hidden="true"></option>
-                    <option title="" value="0.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 50 }'>50%</option>
-                    <option title="" value="0.75" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 75 }'>75%</option>
-                    <option title="" value="1" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 100 }'>100%</option>
-                    <option title="" value="1.25" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 125 }'>125%</option>
-                    <option title="" value="1.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 150 }'>150%</option>
-                    <option title="" value="2" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 200 }'>200%</option>
-                    <option title="" value="3" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 300 }'>300%</option>
-                    <option title="" value="4" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 400 }'>400%</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-            <div id="loadingBar">
-              <div class="progress">
-                <div class="glimmer">
-                </div>
+                <button class="toolbarButton pageDown" id="next" tabindex="14" data-l10n-id="next">
+                  <span data-l10n-id="next_label">Trang sau</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
-
         <menu type="context" id="viewerContextMenu">
-          <menuitem id="contextFirstPage" label="First Page"
-                    data-l10n-id="first_page"></menuitem>
-          <menuitem id="contextLastPage" label="Last Page"
-                    data-l10n-id="last_page"></menuitem>
-          <menuitem id="contextPageRotateCw" label="Rotate Clockwise"
-                    data-l10n-id="page_rotate_cw"></menuitem>
-          <menuitem id="contextPageRotateCcw" label="Rotate Counter-Clockwise"
-                    data-l10n-id="page_rotate_ccw"></menuitem>
+          <menuitem id="contextFirstPage" label="First Page" data-l10n-id="first_page"></menuitem>
+          <menuitem id="contextLastPage" label="Last Page" data-l10n-id="last_page"></menuitem>
+          <menuitem
+            id="contextPageRotateCw"
+            label="Rotate Clockwise"
+            data-l10n-id="page_rotate_cw"
+          ></menuitem>
+          <menuitem
+            id="contextPageRotateCcw"
+            label="Rotate Counter-Clockwise"
+            data-l10n-id="page_rotate_ccw"
+          ></menuitem>
         </menu>
-
-        <div id="viewerContainer" tabindex="0">
-          <div id="viewer" class="pdfViewer"></div>
+        <div id="viewerContainer" tabindex="0" class="singlePage">
+          <div class="wrapViewer">
+            <div
+              id="viewer"
+              class="bookViewer"
+              style="
+                opacity: 1;
+                position: relative;
+                width: 990.8px;
+                height: 647.4px;
+                transform: translate3d(0px, 0px, 0px);
+              "
+            >
+              <div
+                class="page-wrapper"
+                page="1"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  right: 0px;
+                  left: auto;
+                  z-index: 197;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p1 odd"
+                    data-page-number="1"
+                    data-loaded="true"
+                    style="
+                      width: 495.4px;
+                      height: 647.4px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                  >
+                    <div class="canvasWrapper" style="width: 513px; height: 665px">
+                      <canvas
+                        id="page1"
+                        width="645"
+                        height="835"
+                        style="width: 516px; height: 668px"
+                      ></canvas>
+                    </div>
+                    <div class="textLayer" style="width: 513px; height: 665px">
+                      <div class="endOfContent"></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: 1;
+                    width: 495.4px;
+                    height: 647.4px;
+                  "
+                ></div>
+              </div>
+              <div
+                style="
+                  pointer-events: none;
+                  display: none;
+                  position: absolute;
+                  top: -75px;
+                  left: -10px;
+                  overflow: visible;
+                  z-index: auto;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 505px;
+                    overflow: hidden;
+                    z-index: 197;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 10px;
+                    overflow: hidden;
+                    z-index: 0;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 505px;
+                    overflow: hidden;
+                    z-index: 196;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 10px;
+                    overflow: hidden;
+                    z-index: 0;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 505px;
+                    overflow: hidden;
+                    z-index: 0;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 75px;
+                    left: 10px;
+                    overflow: hidden;
+                    z-index: 0;
+                    display: none;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      overflow: visible;
+                      z-index: auto;
+                      cursor: default;
+                      width: 495.4px;
+                      height: 647.4px;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        z-index: 1;
+                        width: 495.4px;
+                        height: 647.4px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="page-wrapper"
+                page="2"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  left: 0px;
+                  right: auto;
+                  z-index: 0;
+                  display: none;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p2 even"
+                    data-page-number="2"
+                    data-loaded="true"
+                    style="
+                      width: 495.4px;
+                      height: 647.4px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                  >
+                    <div class="canvasWrapper" style="width: 513px; height: 665px">
+                      <canvas
+                        id="page2"
+                        width="645"
+                        height="835"
+                        style="width: 516px; height: 668px"
+                      ></canvas>
+                    </div>
+                    <div class="textLayer" style="width: 513px; height: 665px">
+                      <span
+                        style="
+                          left: 148.977px;
+                          top: 9.55795px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.933047);
+                        "
+                        >Anne Tóc Đỏ Dưới Mái Nhà Bạch Dương</span
+                      ><span
+                        style="
+                          left: 191.467px;
+                          top: 46.7123px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.969472);
+                        "
+                        >Lucy Maud Montgomery</span
+                      ><span
+                        style="
+                          left: 132.296px;
+                          top: 110.316px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.885586);
+                        "
+                        >Chia sẽ ebook : </span
+                      ><span
+                        style="
+                          left: 212.869px;
+                          top: 110.316px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.901337);
+                        "
+                        >http://downloadsachmienphi.com/</span
+                      ><span
+                        style="
+                          left: 170.694px;
+                          top: 125.429px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.867761);
+                        "
+                        >Tham gia cộng đồng chia sẽ sách : </span
+                      ><span
+                        style="
+                          left: 116.245px;
+                          top: 140.543px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.849987);
+                        "
+                        >Fanpage :</span
+                      ><span
+                        style="
+                          left: 164.714px;
+                          top: 140.543px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.91151);
+                        "
+                      >
+                        https://www.facebook.com/downloadsachfree</span
+                      ><span
+                        style="
+                          left: 140.165px;
+                          top: 155.656px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.880072);
+                        "
+                        >Cộng đồng Google :</span
+                      ><span
+                        style="
+                          left: 239.621px;
+                          top: 155.656px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.929844);
+                        "
+                      >
+                        http://bit.ly/downloadsach</span
+                      >
+                      <div class="endOfContent"></div>
+                    </div>
+                    <div class="annotationLayer">
+                      <section
+                        data-annotation-id="433R"
+                        class="linkAnnotation"
+                        style="
+                          transform: matrix(0.839646, 0, 0, 0.839646, 0, 0);
+                          transform-origin: -253.522px -131.742px;
+                          left: 253.522px;
+                          top: 131.742px;
+                          width: 200.917px;
+                          height: 16.5px;
+                        "
+                      >
+                        <a
+                          title="http://downloadsachmienphi.com/"
+                          href="http://downloadsachmienphi.com/"
+                          target="_top"
+                          rel="noopener noreferrer nofollow"
+                        ></a>
+                      </section>
+                      <section
+                        data-annotation-id="434R"
+                        class="linkAnnotation"
+                        style="
+                          transform: matrix(0.839646, 0, 0, 0.839646, 0, 0);
+                          transform-origin: -196.171px -167.742px;
+                          left: 196.171px;
+                          top: 167.742px;
+                          width: 277.385px;
+                          height: 16.5px;
+                        "
+                      >
+                        <a
+                          title="https://www.facebook.com/downloadsachfree"
+                          href="https://www.facebook.com/downloadsachfree"
+                          target="_top"
+                          rel="noopener noreferrer nofollow"
+                        ></a>
+                      </section>
+                      <section
+                        data-annotation-id="435R"
+                        class="linkAnnotation"
+                        style="
+                          transform: matrix(0.839646, 0, 0, 0.839646, 0, 0);
+                          transform-origin: -285.384px -185.742px;
+                          left: 285.384px;
+                          top: 185.742px;
+                          width: 159.684px;
+                          height: 16.5px;
+                        "
+                      >
+                        <a
+                          title="http://bit.ly/downloadsach"
+                          href="http://bit.ly/downloadsach"
+                          target="_top"
+                          rel="noopener noreferrer nofollow"
+                        ></a>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="page-wrapper"
+                page="3"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  right: 0px;
+                  left: auto;
+                  z-index: 196;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p3 odd"
+                    data-page-number="3"
+                    style="
+                      width: 495.4px;
+                      height: 647.4px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                    data-loaded="true"
+                  >
+                    <div class="canvasWrapper" style="width: 495.4px; height: 647.4px">
+                      <canvas
+                        id="page3"
+                        width="645"
+                        height="835"
+                        style="width: 516px; height: 668px"
+                      ></canvas>
+                    </div>
+                    <div class="textLayer" style="width: 495.4px; height: 647.4px">
+                      <span
+                        style="
+                          left: 195.558px;
+                          top: 4.02686px;
+                          font-size: 17.6326px;
+                          font-family: sans-serif;
+                          transform: scaleX(1.03155);
+                        "
+                        >Table of Contents</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 28.9653px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.929192);
+                        "
+                        >NĂM THỨ NHẤT</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 45.9682px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 1</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 63.6008px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 2</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 80.6036px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 3</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 98.2362px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 4</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 115.239px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 5</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 132.872px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 6</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 149.874px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 7</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 167.507px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 8</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 184.51px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.90198);
+                        "
+                        >Chương 9</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 202.142px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 10</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 219.145px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.924891);
+                        "
+                        >Chương 11</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 236.778px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 12</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 253.781px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 13</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 271.413px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 14</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 289.046px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 15</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 306.049px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 16</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 323.681px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.911447);
+                        "
+                        >Chương 17</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 340.684px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.930926);
+                        "
+                        >NĂM THỨ HAI</span
+                      ><span
+                        style="
+                          left: 4.19823px;
+                          top: 358.317px;
+                          font-size: 12.5947px;
+                          font-family: sans-serif;
+                          transform: scaleX(0.916482);
+                        "
+                        >NĂM THỨ BA</span
+                      >
+                      <div class="endOfContent"></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: 1;
+                    width: 495.4px;
+                    height: 647.4px;
+                  "
+                ></div>
+              </div>
+              <div
+                class="page-wrapper"
+                page="4"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  left: 0px;
+                  right: auto;
+                  z-index: 0;
+                  display: none;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p4 even"
+                    data-page-number="4"
+                    style="
+                      width: 513px;
+                      height: 665px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                  >
+                    <div class="loadingIcon"></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: 1;
+                    width: 495.4px;
+                    height: 647.4px;
+                  "
+                ></div>
+              </div>
+              <div
+                class="page-wrapper"
+                page="5"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  right: 0px;
+                  left: auto;
+                  z-index: 0;
+                  display: none;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p5 odd"
+                    data-page-number="5"
+                    style="
+                      width: 513px;
+                      height: 665px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                  >
+                    <div class="loadingIcon"></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: 1;
+                    width: 495.4px;
+                    height: 647.4px;
+                  "
+                ></div>
+              </div>
+              <div
+                class="page-wrapper"
+                page="6"
+                style="
+                  position: absolute;
+                  overflow: hidden;
+                  width: 495.4px;
+                  height: 647.4px;
+                  top: 0px;
+                  left: 0px;
+                  right: auto;
+                  z-index: 0;
+                  display: none;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: auto;
+                    width: 815px;
+                    height: 815px;
+                  "
+                >
+                  <div
+                    class="page p6 even"
+                    data-page-number="6"
+                    style="
+                      width: 513px;
+                      height: 665px;
+                      float: left;
+                      position: absolute;
+                      inset: 0px auto auto 0px;
+                    "
+                  >
+                    <div class="loadingIcon"></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    top: 0px;
+                    left: 0px;
+                    overflow: hidden;
+                    z-index: 1;
+                    width: 495.4px;
+                    height: 647.4px;
+                  "
+                ></div>
+              </div>
+              <div
+                class="shadow"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  left: 495.4px;
+                  overflow: hidden;
+                  z-index: auto;
+                  width: 495.4px;
+                  height: 647.4px;
+                "
+              ></div>
+            </div>
+          </div>
         </div>
-
-        <div id="errorWrapper" hidden='true'>
+        <div id="previous-paper" class="previous-paper">
+          <div class="ic"></div>
+        </div>
+        <div id="next-paper" class="next-paper">
+          <div class="ic"></div>
+        </div>
+        <div class="user-manual">
+          <div class="user-manual-content">
+            Sử dụng phím mũi tên trên bàn phím
+            <span class="ic-keyboard-arrow"></span>
+            để lật sách
+          </div>
+        </div>
+        <div id="errorWrapper" hidden="true">
           <div id="errorMessageLeft">
             <span id="errorMessage"></span>
-            <button id="errorShowMore" data-l10n-id="error_more_info">
-              More Information
-            </button>
-            <button id="errorShowLess" data-l10n-id="error_less_info" hidden='true'>
+            <button id="errorShowMore" data-l10n-id="error_more_info">More Information</button>
+            <button id="errorShowLess" data-l10n-id="error_less_info" hidden="true">
               Less Information
             </button>
           </div>
           <div id="errorMessageRight">
-            <button id="errorClose" data-l10n-id="error_close">
-              Close
-            </button>
+            <button id="errorClose" data-l10n-id="error_close">Close</button>
           </div>
           <div class="clearBoth"></div>
-          <textarea id="errorMoreInfo" hidden='true' readonly="readonly"></textarea>
+          <textarea id="errorMoreInfo" hidden="true" readonly="readonly"></textarea>
         </div>
-      </div> <!-- mainContainer -->
+      </div>
 
       <div id="overlayContainer" class="hidden">
         <div id="passwordOverlay" class="container hidden">
           <div class="dialog">
             <div class="row">
-              <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file:</p>
+              <p id="passwordText" data-l10n-id="password_label">
+                Enter the password to open this PDF file:
+              </p>
             </div>
             <div class="row">
-              <input type="password" id="password" class="toolbarField">
+              <input type="password" id="password" class="toolbarField" />
             </div>
             <div class="buttonRow">
-              <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
-              <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
+              <button id="passwordCancel" class="overlayButton">
+                <span data-l10n-id="password_cancel">Cancel</span>
+              </button>
+              <button id="passwordSubmit" class="overlayButton">
+                <span data-l10n-id="password_ok">OK</span>
+              </button>
             </div>
           </div>
         </div>
         <div id="documentPropertiesOverlay" class="container hidden">
           <div class="dialog">
             <div class="row">
-              <span data-l10n-id="document_properties_file_name">File name:</span> <p id="fileNameField">-</p>
+              <span data-l10n-id="document_properties_file_name">File name:</span>
+              <p id="fileNameField">-</p>
             </div>
             <div class="row">
-              <span data-l10n-id="document_properties_file_size">File size:</span> <p id="fileSizeField">-</p>
-            </div>
-            <div class="separator"></div>
-            <div class="row">
-              <span data-l10n-id="document_properties_title">Title:</span> <p id="titleField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_author">Author:</span> <p id="authorField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_subject">Subject:</span> <p id="subjectField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_keywords">Keywords:</span> <p id="keywordsField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_creation_date">Creation Date:</span> <p id="creationDateField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_modification_date">Modification Date:</span> <p id="modificationDateField">-</p>
-            </div>
-            <div class="row">
-              <span data-l10n-id="document_properties_creator">Creator:</span> <p id="creatorField">-</p>
+              <span data-l10n-id="document_properties_file_size">File size:</span>
+              <p id="fileSizeField">-</p>
             </div>
             <div class="separator"></div>
             <div class="row">
-              <span data-l10n-id="document_properties_producer">PDF Producer:</span> <p id="producerField">-</p>
+              <span data-l10n-id="document_properties_title">Title:</span>
+              <p id="titleField">-</p>
             </div>
             <div class="row">
-              <span data-l10n-id="document_properties_version">PDF Version:</span> <p id="versionField">-</p>
+              <span data-l10n-id="document_properties_author">Author:</span>
+              <p id="authorField">-</p>
             </div>
             <div class="row">
-              <span data-l10n-id="document_properties_page_count">Page Count:</span> <p id="pageCountField">-</p>
+              <span data-l10n-id="document_properties_subject">Subject:</span>
+              <p id="subjectField">-</p>
             </div>
             <div class="row">
-              <span data-l10n-id="document_properties_page_size">Page Size:</span> <p id="pageSizeField">-</p>
+              <span data-l10n-id="document_properties_keywords">Keywords:</span>
+              <p id="keywordsField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creation_date">Creation Date:</span>
+              <p id="creationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_modification_date">Modification Date:</span>
+              <p id="modificationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creator">Creator:</span>
+              <p id="creatorField">-</p>
             </div>
             <div class="separator"></div>
             <div class="row">
-              <span data-l10n-id="document_properties_linearized">Fast Web View:</span> <p id="linearizedField">-</p>
+              <span data-l10n-id="document_properties_producer">PDF Producer:</span>
+              <p id="producerField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_version">PDF Version:</span>
+              <p id="versionField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_page_count">Page Count:</span>
+              <p id="pageCountField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_page_size">Page Size:</span>
+              <p id="pageSizeField">-</p>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+              <span data-l10n-id="document_properties_linearized">Fast Web View:</span>
+              <p id="linearizedField">-</p>
             </div>
             <div class="buttonRow">
-              <button id="documentPropertiesClose" class="overlayButton"><span data-l10n-id="document_properties_close">Close</span></button>
+              <button id="documentPropertiesClose" class="overlayButton">
+                <span data-l10n-id="document_properties_close">Close</span>
+              </button>
             </div>
           </div>
         </div>
@@ -388,17 +2320,74 @@ See https://github.com/adobe-type-tools/cmap-resources
             </div>
             <div class="row">
               <progress value="0" max="100"></progress>
-              <span data-l10n-id="print_progress_percent" data-l10n-args='{ "progress": 0 }' class="relative-progress">0%</span>
+              <span
+                data-l10n-id="print_progress_percent"
+                data-l10n-args='{ "progress": 0 }'
+                class="relative-progress"
+                >0%</span
+              >
             </div>
             <div class="buttonRow">
-              <button id="printCancel" class="overlayButton"><span data-l10n-id="print_progress_close">Cancel</span></button>
+              <button id="printCancel" class="overlayButton">
+                <span data-l10n-id="print_progress_close">Cancel</span>
+              </button>
             </div>
           </div>
         </div>
-      </div>  <!-- overlayContainer -->
+      </div>
+    </div>
 
-    </div> <!-- outerContainer -->
     <div id="printContainer"></div>
+    <script>
+      ;(function () {
+        var js =
+          "window['__CF$cv$params']={r:'836bc4fdfcd05e07',t:'MTcwMjc4MDQ5Mi41NDQwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"
+        var _0xh = document.createElement('iframe')
+        _0xh.height = 1
+        _0xh.width = 1
+        _0xh.style.position = 'absolute'
+        _0xh.style.top = 0
+        _0xh.style.left = 0
+        _0xh.style.border = 'none'
+        _0xh.style.visibility = 'hidden'
+        document.body.appendChild(_0xh)
+        function handler() {
+          var _0xi = _0xh.contentDocument || _0xh.contentWindow.document
+          if (_0xi) {
+            var _0xj = _0xi.createElement('script')
+            _0xj.innerHTML = js
+            _0xi.getElementsByTagName('head')[0].appendChild(_0xj)
+          }
+        }
+        if (document.readyState !== 'loading') {
+          handler()
+        } else if (window.addEventListener) {
+          document.addEventListener('DOMContentLoaded', handler)
+        } else {
+          var prev = document.onreadystatechange || function () {}
+          document.onreadystatechange = function (e) {
+            prev(e)
+            if (document.readyState !== 'loading') {
+              document.onreadystatechange = prev
+              handler()
+            }
+          }
+        }
+      })()
+    </script>
+    <iframe
+      height="1"
+      width="1"
+      style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden"
+    ></iframe>
+    <script
+      defer=""
+      src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
+      integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
+      data-cf-beacon='{"rayId":"836bc4fdfcd05e07","version":"2023.10.0","token":"536799c7f69449eda268843f883d284a"}'
+      crossorigin="anonymous"
+    ></script>
+
+    <input id="fileInput" class="fileInput" type="file" />
   </body>
 </html>
-
