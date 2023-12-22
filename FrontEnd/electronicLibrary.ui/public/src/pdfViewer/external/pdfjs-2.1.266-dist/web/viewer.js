@@ -1746,8 +1746,8 @@
       })
       const stopReadBtn = document.getElementById('stopRead')
       stopReadBtn.addEventListener('click', stopReading, false)
-      const fullScreenBtn = document.getElementById('fullScreen')
-      fullScreenBtn.addEventListener('click', toggleFullscreen)
+      // const fullScreenBtn = document.getElementById('fullScreen')
+      // fullScreenBtn.addEventListener('click', toggleFullscreen)
       if (window.innerWidth === screen.width && window.innerHeight === screen.height) {
         var isMobile = mobileCheck()
         document.getElementById('fullScreen').classList.add('toggled')
@@ -12480,7 +12480,7 @@
           disablePageLabels: false,
           historyUpdateUrl: false,
           scrollModeOnLoad: -1,
-          spreadModeOnLoad: 0
+          spreadModeOnLoad: 2
         })
       }
       return defaultPreferences
@@ -14144,6 +14144,7 @@ function stopReading() {
   ) {
     currentPage = 0
   }
+
   const data = { type: 'stopReading', currentPage: currentPage }
   parent.postMessage(data, '*')
   if (contextData) {
@@ -14197,6 +14198,8 @@ window.addEventListener(
   },
   true
 )
+
+
 window.addEventListener('message', function (event) {
   switch (event.data.type) {
     case 'toPage':

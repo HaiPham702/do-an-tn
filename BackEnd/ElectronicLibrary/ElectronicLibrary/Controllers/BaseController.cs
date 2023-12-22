@@ -12,7 +12,7 @@ namespace ElectronicLibrary.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class BaseController<Entity> : Controller
     {
         #region field

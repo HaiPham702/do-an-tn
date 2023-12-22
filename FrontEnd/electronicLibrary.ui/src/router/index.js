@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '@/views/HomeView.vue'
 
 const routes = [
   {
@@ -10,7 +9,7 @@ const routes = [
     },
     path: '/',
     name: 'dashboard',
-    component: Home
+    component: () => import('@/views/HomeView.vue')
   },
   {
     meta: {

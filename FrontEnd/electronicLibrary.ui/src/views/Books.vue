@@ -8,7 +8,7 @@
       >
       </SectionTitleLineWithButton>
       <div class="container-grid">
-        <el-table :data="eBooks" height="500" style="width: 100%" :border="true" size="large">
+        <el-table :data="eBooks" height="500" style="width: 100%" :border="true" size="large" row-key="BookId">
           <el-table-column type="selection" width="55" />
           <el-table-column width="100" label="Ảnh bìa" class-name="cover-book">
             <template #default="scope">

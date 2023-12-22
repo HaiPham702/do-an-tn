@@ -1111,7 +1111,7 @@ html[dir=rtl] #findNext {
 .toolbarButton::before,.secondaryToolbarButton::before {
   position: absolute;
   display: inline-block;
-  top: 6px;
+  top: 10px;
   left: 8px
 }
 
@@ -1178,7 +1178,7 @@ html[dir=rtl] .toolbarButton.findNext::before {
 html[dir=ltr] .toolbarButton.pageUp::before {
   content: url(images/ic_previous_page.svg);
   transform: rotateZ(90deg);
-  top: unset
+  top: 17px
 }
 
 html[dir=rtl] .toolbarButton.pageUp::before {
@@ -1198,7 +1198,7 @@ html[dir=ltr] .toolbarButton.pageDown::before {
   content: url(images/ic_next_page.svg);
   transform: rotateZ(-90deg);
   right: 8px;
-  top: unset;
+  top: 17px;
   left: unset
 }
 
@@ -1225,7 +1225,7 @@ html[dir=rtl] .toolbarButton.pageDown::before {
 }
 
 .toolbarButton.spreadEven::before {
-  top: 3px;
+  top: 14px;
   content: url(images/ic_book.svg)
 }
 
@@ -1244,7 +1244,7 @@ html[dir=rtl] .toolbarButton.pageDown::before {
 
 .toolbarButton.fullScreen::before {
   content: url(images/ic_fullScreen.svg);
-  top: 5px
+  top: 12px
 }
 
 .toolbarButton.presentationMode::before,.secondaryToolbarButton.presentationMode::before {

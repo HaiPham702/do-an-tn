@@ -39,9 +39,11 @@
       <div class="search-container">
         <div class="input-wrap">
           <input
+            v-model="textSearch"
             class="ms-input-item flex w-full"
             placeholder="Nhập nhan đề, Tên tác giả"
             maxlength="255"
+            @keydown.enter="getBooks"
           />
         </div>
         <button class="btn-search">
@@ -50,7 +52,7 @@
       </div>
     </div>
     <div class="container-portal">
-      <GroupViewBook v-for="item in 5"/>
+      <GroupViewBook v-for="(item, index) in books" :key="index" :data="item" />
     </div>
   </div>
 </template>
@@ -68,23 +70,62 @@ const bookStore = useBookStore()
 const groupBook = ref([])
 
 const getBooKGroup = () => {
+    let sql = `SELECT
+              b.BookGroupId,
+              b.GroupName
+            FROM bookgroup b
+              INNER JOIN book b1
+                ON b.BookGroupId = b1.BookGroupId
+            GROUP BY b.BookGroupId,
+                    b.GroupName
+            ORDER BY COUNT(*) DESC`
+
+    bookStore.executeCommand('Book', sql).then((res) => {
+      groupBook.value = res
+    })
+}
+
+const textSearch = ref('')
+
+const groupBy = (array, key) => {
+  return array.reduce((result, currentItem) => {
+    // Lấy giá trị của khóa từ phần tử hiện tại
+    const keyValue = currentItem[key]
+
+    // Tạo một nhóm mới nếu chưa tồn tại
+    if (!result[keyValue]) {
+      result[keyValue] = []
+    }
+
+    // Thêm phần tử vào nhóm
+    result[keyValue].push(currentItem)
+
+    return result
+  }, {})
+}
+
+const books = ref([])
+
+const getBooks = () => {
   let sql = `SELECT
-            b.BookGroupId,
-            b.GroupName
-          FROM bookgroup b
-            INNER JOIN book b1
-              ON b.BookGroupId = b1.BookGroupId
-          GROUP BY b.BookGroupId,
-                  b.GroupName
-          ORDER BY COUNT(*) DESC`
+              b.*,
+              b1.GroupName
+            FROM view_book b
+              INNER JOIN bookgroup b1
+                ON b.BookGroupId = b1.BookGroupId
+            WHERE (b.BookName LIKE '%${textSearch.value.trim()}%'
+            OR b.Author LIKE '%${textSearch.value.trim()}%')
+            AND b.FileBookID IS NOT NULL
+            ORDER BY b1.BookGroupId`
 
   bookStore.executeCommand('Book', sql).then((res) => {
-    groupBook.value = res
+    books.value = groupBy(res, 'BookGroupID')
   })
 }
 
 onMounted(() => {
   getBooKGroup()
+  getBooks()
 })
 </script>
 <style lang="scss" scope>
