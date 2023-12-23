@@ -1,22 +1,43 @@
 <template>
-  <div class="book-item rounded-xl cursor-pointer">
+  <div class="book-item rounded-xl cursor-pointer" @click="onReadBook">
     <div class="book_img">
-      <img src="src/assets/BookFile/152043eb-270d-42af-b35c-255da9ed399d.jpeg" />
+      <img :src="urlBookCorver" />
     </div>
     <div class="text-left px-2 pt-2">
       <div class="book-title font-semibold text-base mb-1">
         <div class="title-content">
-          20 đề thi trắc nghiệm Vật lí Trungdasasasasasasasasas học phổ thông
+          {{ data.BookName }}
         </div>
       </div>
-      <div class="author">Tác giả: Phạm Văn Hải</div>
-      <div class="text-xs">Nhà xuất bản: Giáo dục</div>
+      <div class="author">Tác giả: {{ data.Author }}</div>
+      <div class="text-xs">Nhà xuất bản: {{ data.PublisherName }}</div>
     </div>
   </div>
   <!-- form -->
-
 </template>
-<script setup></script>
+<script setup>
+import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const props = defineProps({
+  data: {}
+})
+
+const router = useRouter()
+
+const urlBookCorver = computed(() => {
+  return `src/assets/BookFile/${props.data.FileCoverBook}`
+})
+
+const onReadBook = () => {
+  router.push({
+    name: 'bookView',
+    query: { BookId: props.data.BookId }
+  })
+}
+
+onMounted(() => {
+})
+</script>
 <style lang="scss" scope>
 .book-item {
   overflow: hidden;

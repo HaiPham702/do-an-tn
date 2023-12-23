@@ -1,9 +1,9 @@
 <template>
   <div class="py-4">
-    <div class="text-xl font-semibold pb-2">Sách có lượt xem nhiều nhất</div>
+    <div class="text-xl font-semibold pb-2">{{ data[0].GroupName }}</div>
     <Carousel v-bind="settings" :breakpoints="breakpoints">
-      <Slide v-for="slide in 10" :key="slide">
-        <CardBook />
+      <Slide v-for="(item, index) in data" :key="index">
+        <CardBook :data="item" />
       </Slide>
 
       <template #addons>
@@ -15,8 +15,16 @@
 <script setup>
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import CardBook from '@/views/Portal/CardBook.vue'
+
+const props = defineProps({
+  data: {}
+})
+
+onMounted(() => {
+  props
+})
 
 const settings = ref({
   itemsToShow: 1,
@@ -38,6 +46,6 @@ const breakpoints = ref({
 </script>
 <style lang="scss" scope>
 .carousel__track {
-    margin: 12px 0;
+  margin: 12px 0;
 }
 </style>
