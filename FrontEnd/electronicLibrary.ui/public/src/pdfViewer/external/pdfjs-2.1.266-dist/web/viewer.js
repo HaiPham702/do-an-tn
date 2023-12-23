@@ -14147,58 +14147,11 @@ function stopReading() {
 
   const data = { type: 'stopReading', currentPage: currentPage }
   parent.postMessage(data, '*')
-  if (contextData) {
-    if (contextData.UserId) {
-      var spreadModeKey = `spreadMode_${contextData.UserId}`
-      var value = isSinglePageViewMode() ? 'single' : 'double'
-      localStorage.setItem(spreadModeKey, value)
-    }
-  }
 }
-function toggleFullscreen() {
-  var data = { type: 'toggleFullscreen' }
-  var isMobile = mobileCheck()
-  if (window.innerWidth == screen.width && window.innerHeight == screen.height) {
-    document.getElementById('fullScreen').classList.remove('toggled')
-    document.getElementById('fullScreen').innerHTML = isMobile ? '' : 'Toàn màn hình'
-    document.getElementById('fullScreen').style.minWidth = isMobile ? '44px' : '150px'
-  } else {
-    document.getElementById('fullScreen').innerHTML = isMobile ? '' : 'Thoát toàn màn hình'
-    document.getElementById('fullScreen').style.minWidth = isMobile ? '44px' : '190px'
-    document.getElementById('fullScreen').classList.add('toggled')
-  }
-  parent.postMessage(data, '*')
-  setTimeout(function () {
-    PDFViewerApplication.pdfViewer.currentPageNumber =
-      PDFViewerApplication.pdfViewer.currentPageNumber
-    PDFViewerApplication.pdfViewer.currentScaleValue = 'page-fit'
-  }, 0)
-}
+
 function isSinglePageViewMode() {
   return window.getComputedStyle(document.getElementById('spreadNone')).display === 'none'
 }
-window.addEventListener(
-  'resize',
-  function (event) {
-    if (window.innerHeight !== screen.height) {
-      document.getElementById('fullScreen').classList.remove('toggled')
-      setTimeout(function () {
-        PDFViewerApplication.pdfViewer.currentPageNumber =
-          PDFViewerApplication.pdfViewer.currentPageNumber
-        PDFViewerApplication.pdfViewer.currentScaleValue = 'page-fit'
-      }, 0)
-    } else if (window.innerWidth === screen.width && window.innerHeight === screen.height) {
-      document.getElementById('fullScreen').classList.add('toggled')
-      setTimeout(function () {
-        PDFViewerApplication.pdfViewer.currentPageNumber =
-          PDFViewerApplication.pdfViewer.currentPageNumber
-        PDFViewerApplication.pdfViewer.currentScaleValue = 'page-fit'
-      }, 0)
-    }
-  },
-  true
-)
-
 
 window.addEventListener('message', function (event) {
   switch (event.data.type) {
@@ -14208,23 +14161,27 @@ window.addEventListener('message', function (event) {
       var eventChange = new Event('change')
       inputElement.dispatchEvent(eventChange)
       var context = event.data.contextData
+      document.getElementById('spreadNone').click()
+      document.getElementById('spreadEven').click()
+
+      if (event.data.currentPage === 1) {
+        document.getElementById('spreadEven').click()
+      } else {
+        bookFlip.spread(2)
+        PDFViewerApplication.eventBus.dispatch('spreadmodechanged', {
+          source: PDFViewerApplication,
+          mode: 2
+        })
+        document.getElementById('spreadNone').style.display = 'inline-block'
+        document.getElementById('spreadEven').style.display = 'none'
+      }
+
       if (context) {
         contextData = context
         if (context.UserId) {
           var spreadModeKey = `spreadMode_${context.UserId}`
           var spreadModeUser = localStorage.getItem(spreadModeKey)
           if (spreadModeUser && spreadModeUser === 'double' && !mobileCheck()) {
-            if (event.data.currentPage === 1) {
-              document.getElementById('spreadEven').click()
-            } else {
-              bookFlip.spread(2)
-              PDFViewerApplication.eventBus.dispatch('spreadmodechanged', {
-                source: PDFViewerApplication,
-                mode: 2
-              })
-              document.getElementById('spreadNone').style.display = 'inline-block'
-              document.getElementById('spreadEven').style.display = 'none'
-            }
           }
         }
       }

@@ -34,7 +34,8 @@ export default {
           y: {
             ticks: {
               stepSize: 1 // Đặt giá trị chia nhỏ nhất của trục y là 1
-            }
+            },
+            stacked: true
           }
         }
       }
@@ -61,7 +62,8 @@ export default {
                     ON b.BookId = r.BookId
                 GROUP BY b.BookName,
                         b.BookId
-                ORDER BY ReadCount DESC;`
+                ORDER BY ReadCount DESC
+                LIMIT 6;`
       loadChart.value = false
 
       bookStore.executeCommand('Book', sql).then((res) => {

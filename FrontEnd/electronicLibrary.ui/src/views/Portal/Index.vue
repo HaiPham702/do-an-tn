@@ -11,6 +11,21 @@
       <div class="user-info flex items-center">
         <div class="mr-4">{{ userName }}</div>
         <el-avatar :src="mainStore.userAvatar" />
+        <el-dropdown class="ml-4">
+          <span class="el-dropdown-link">
+            <div>
+              <img src="@/assets/icons/ThreeLine.svg" />
+            </div>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="logout">Đăng xuất</el-dropdown-item>
+              <el-dropdown-item v-if="context.user.role == 1" @click="goAdministration"
+                >Trang quản trị</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
     <!-- Danh sách nhóm loại sách -->
@@ -52,6 +67,8 @@
       </div>
     </div>
     <div class="container-portal">
+      <GroupViewBook v-if="booksRead.length" title="Sách đang đọc" :data="booksRead" />
+
       <GroupViewBook v-for="(item, index) in books" :key="index" :data="item" />
     </div>
   </div>
@@ -61,16 +78,38 @@ import { computed, onMounted, ref } from 'vue'
 import { useMainStore } from '@/stores/main'
 import { useBookStore } from '@/stores/bussiness/bookStore.js'
 import GroupViewBook from '@/views/Portal/GroupViewBook.vue'
+import { useRouter } from 'vue-router'
+import { useContextStore } from '@/stores/contextStore.js'
+
+const context = useContextStore()
 
 const mainStore = useMainStore()
 const userName = computed(() => mainStore.userName)
+
+const router = useRouter()
 
 const bookStore = useBookStore()
 
 const groupBook = ref([])
 
+const booksRead = ref([])
+
+const getBooksRead = () => {
+  let sql = `SELECT
+              vb.*
+            FROM view_book vb
+              INNER JOIN readhistory r
+                ON vb.BookId = r.BookId
+              WHERE r.UserId = ${context.user.userId} 
+              ORDER BY r.BookId`
+
+  bookStore.executeCommand('Book', sql).then((res) => {
+    booksRead.value = res
+  })
+}
+
 const getBooKGroup = () => {
-    let sql = `SELECT
+  let sql = `SELECT
               b.BookGroupId,
               b.GroupName
             FROM bookgroup b
@@ -80,9 +119,22 @@ const getBooKGroup = () => {
                     b.GroupName
             ORDER BY COUNT(*) DESC`
 
-    bookStore.executeCommand('Book', sql).then((res) => {
-      groupBook.value = res
-    })
+  bookStore.executeCommand('Book', sql).then((res) => {
+    groupBook.value = res
+  })
+}
+
+const logout = () => {
+  router.push({
+    name: 'login'
+  })
+  localStorage.clear()
+}
+
+const goAdministration = () => {
+  router.push({
+    name: 'dashboard'
+  })
 }
 
 const textSearch = ref('')
@@ -126,6 +178,7 @@ const getBooks = () => {
 onMounted(() => {
   getBooKGroup()
   getBooks()
+  getBooksRead()
 })
 </script>
 <style lang="scss" scope>

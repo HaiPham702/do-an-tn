@@ -33,7 +33,7 @@ const props = defineProps({
   isRoundIcon: Boolean
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'changeFile'])
 
 const root = ref(null)
 
@@ -66,6 +66,7 @@ const upload = (event) => {
     })
     file.value = null
     emit('update:modelValue', file.value)
+    emit('changeFile', file.value)
   }
 }
 </script>

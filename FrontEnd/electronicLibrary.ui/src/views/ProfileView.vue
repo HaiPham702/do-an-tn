@@ -1,13 +1,11 @@
 <script setup>
 import { reactive } from 'vue'
 import { useMainStore } from '@/stores/main'
-import { mdiAccount, mdiMail, mdiAsterisk, mdiFormTextboxPassword, mdiGithub } from '@mdi/js'
+import { mdiAccount, mdiMail } from '@mdi/js'
 import SectionMain from '@/components/SectionMain.vue'
 import CardBox from '@/components/CardBox.vue'
-import BaseDivider from '@/components/BaseDivider.vue'
 import FormField from '@/components/FormField.vue'
 import FormControl from '@/components/FormControl.vue'
-import FormFilePicker from '@/components/FormFilePicker.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseButtons from '@/components/BaseButtons.vue'
 import UserCard from '@/components/UserCard.vue'
@@ -44,39 +42,28 @@ const submitPass = () => {
 
       <UserCard class="mb-6" />
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <CardBox is-form @submit.prevent="submitProfile">
-          <!-- <FormField label="Ảnh đại diện" help="Max 500kb">
-            <FormFilePicker accept="image/* " label="Upload" />
-          </FormField> -->
+      <CardBox is-form @submit.prevent="submitProfile">
 
-          <FormField label="Họ và tên">
-            <FormControl
-              v-model="profileForm.name"
-              :icon="mdiAccount"
-              name="username"
-              required
-              autocomplete="username"
-            />
-          </FormField>
-          <FormField label="E-mail" >
-            <FormControl
-              v-model="profileForm.email"
-              :icon="mdiMail"
-              type="email"
-              name="email"
-              required
-              autocomplete="email"
-            />
-          </FormField>
-
-          <template #footer>
-            <BaseButtons>
-              <BaseButton color="info" type="submit" label="Lưu" />
-            </BaseButtons>
-          </template>
-        </CardBox>
-      </div>
+        <FormField label="Họ và tên">
+          <FormControl
+            v-model="profileForm.name"
+            :icon="mdiAccount"
+            name="username"
+            required
+            autocomplete="username"
+          />
+        </FormField>
+        <FormField label="E-mail">
+          <FormControl
+            v-model="profileForm.email"
+            :icon="mdiMail"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+        </FormField>
+      </CardBox>
     </SectionMain>
   </LayoutAuthenticated>
 </template>

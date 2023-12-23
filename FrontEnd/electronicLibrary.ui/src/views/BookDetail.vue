@@ -115,6 +115,7 @@
               label="Tải file sách"
               accept=".pdf"
               :file-name="fileNameUser"
+              @changeFile="changeFile = true"
             />
           </div>
         </el-col>
@@ -156,6 +157,8 @@ export default defineComponent({
     const { proxy } = getCurrentInstance()
     const formData = ref({})
 
+    const changeFile = ref(false)
+
     const publisherStore = usePublisherStore()
 
     const editMode = computed(() => {
@@ -174,21 +177,32 @@ export default defineComponent({
 
     const submitData = async () => {
       if (fileBook.value) {
-        publisherStore
-          .uploadFile('Book', {
-            file: fileBook.value,
-            imageCover: fileCover.value ?  fileCover.value[0]?.raw : null
-          })
-          .then((res) => {
-            switch (editMode.value) {
-              case 1: // insert
-                break
+        if (changeFile.value) {
+          publisherStore
+            .uploadFile('Book', {
+              file: fileBook.value,
+              imageCover: fileCover.value ? fileCover.value[0]?.raw : null
+            })
+            .then((res) => {
+              switch (editMode.value) {
+                case 1: // insert
+                  break
 
-              case 2: // update
-                submitUpdate(res.data)
-                break
-            }
-          })
+                case 2: // update
+                  submitUpdate(res.data)
+                  break
+              }
+            })
+        } else {
+          switch (editMode.value) {
+            case 1: // insert
+              break
+
+            case 2: // update
+              submitUpdate()
+              break
+          }
+        }
       } else {
         ElMessage({
           type: 'warning',
@@ -203,11 +217,13 @@ export default defineComponent({
         data.BookName ? data.BookName : ''
       }',Description = '${data.Description ? data.Description : ''}',Author = '${
         data.Author ? data.Author : ''
-      }',BookGroupID = ${data.BookGroupID},PublisherId = ${data.PublisherId},FileBookID = '${
-        fileData.fileName
-      }',FileCoverBook = '${fileData.imageCoverName}',FileName = '${
-        fileData.fileNameUser
-      }' WHERE BookId = ${data.BookId};`
+      }',BookGroupID = ${data.BookGroupID}
+      ${
+        fileData
+          ? `,PublisherId = ${data.PublisherId},FileBookID = '${fileData.fileName}',FileCoverBook = '${fileData.imageCoverName}',FileName = '${fileData.fileNameUser}' `
+          : ''
+      }
+      WHERE BookId = ${data.BookId};`
 
       publisherStore.executeCommand('Publisher', sql).then((res) => {
         ElMessage({
@@ -271,25 +287,6 @@ export default defineComponent({
       })
     })
 
-    function checkUrl(url) {
-      // Tạo một đối tượng URL từ chuỗi URL
-      try {
-        var urlObject = new URL(url)
-
-        // Lấy phần tên tệp từ đường dẫn
-        var tenTep = urlObject.pathname.split('/').pop()
-
-        // Kiểm tra xem tên tệp có tồn tại không
-        if (tenTep) {
-          return true
-        } else {
-          return false
-        }
-      } catch (error) {
-        return false
-      }
-    }
-
     watch(fileCover, (val) => {
       if (val.length) {
         let imageMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']
@@ -314,6 +311,8 @@ export default defineComponent({
       }
     })
 
+
+
     watch(
       () => props.formParam,
       (val) => {
@@ -336,6 +335,7 @@ export default defineComponent({
               fileNameUser.value = val.FileName
             }
           }
+          changeFile.value = false
         }
       }
     )
@@ -368,6 +368,7 @@ export default defineComponent({
     })
 
     return {
+      changeFile,
       fileNameUser,
       fileBook,
       formRef,

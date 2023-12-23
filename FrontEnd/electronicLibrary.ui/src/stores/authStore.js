@@ -33,12 +33,19 @@ export const useAuthStore = defineStore('login', () => {
         context.user = res.data
         context.Token = res.data?.token
         localStorage.setItem('context', JSON.stringify(res.data))
-        router.push({
-          name: 'dashboard'
-        })
+        if (context.user.role === 1) {
+          router.push({
+            name: 'dashboard'
+          })
+        } else {
+          router.push({
+            name: 'portal'
+          })
+        }
+
         setTimeout(() => {
           location.reload()
-        }, 500)
+        }, 300)
       })
       .catch((res) => {
         return res.data

@@ -17,7 +17,7 @@ export default [
     icon: mdiBookOpen
   },
   {
-    to: '/forms',
+    to: '/users',
     label: 'Bạn đọc',
     icon: mdiAccountGroupOutline
   },

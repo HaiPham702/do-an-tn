@@ -34,7 +34,8 @@ export default {
           y: {
             ticks: {
               stepSize: 1 // Đặt giá trị chia nhỏ nhất của trục y là 1
-            }
+            },
+            stacked: true
           }
         }
       }
@@ -44,30 +45,30 @@ export default {
       labels: [],
       datasets: [
         {
-          label: 'Số sách đã đọc',
+          label: 'Số sách đang đọc',
           data: [],
-          backgroundColor: ['rgba(54, 162, 235, 0.2)']
+          backgroundColor: ['#49C7CF']
         }
       ]
     })
 
     onMounted(() => {
       let sql = `SELECT
-                b.BookId,
-                b.BookName,
-                COUNT(*) AS ReadCount
-                FROM book b
-                INNER JOIN readhistory r
-                    ON b.BookId = r.BookId
-                GROUP BY b.BookName,
-                        b.BookId
-                ORDER BY ReadCount DESC;`
+                  u.UserId,
+                  u.FullName,
+                  COUNT(*) AS TotalRead
+                FROM user u
+                  INNER JOIN readhistory r
+                    ON u.UserId = r.UserId
+                GROUP BY u.UserId,
+                        u.FullName
+                ORDER BY TotalRead DESC;`
       loadChart.value = false
 
       bookStore.executeCommand('Book', sql).then((res) => {
         if (res.length) {
-          chartData.value.labels = res.map((n) => n.BookName)
-          chartData.value.datasets[0].data = res.map((n) => n.ReadCount)
+          chartData.value.labels = res.map((n) => n.FullName)
+          chartData.value.datasets[0].data = res.map((n) => n.TotalRead)
           loadChart.value = true
         }
       })

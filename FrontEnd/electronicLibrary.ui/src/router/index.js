@@ -21,11 +21,11 @@ const routes = [
   },
   {
     meta: {
-      title: 'Forms'
+      title: 'Bạn đọc'
     },
-    path: '/forms',
-    name: 'forms',
-    component: () => import('@/views/FormsView.vue')
+    path: '/users',
+    name: 'users',
+    component: () => import('@/views/UserView.vue')
   },
   {
     meta: {

@@ -8,54 +8,63 @@
       >
       </SectionTitleLineWithButton>
       <div class="container-grid">
-        <el-table :data="eBooks" height="500" style="width: 100%" :border="true" size="large" row-key="BookId">
-          <el-table-column type="selection" width="55" />
-          <el-table-column width="100" label="Ảnh bìa" class-name="cover-book">
-            <template #default="scope">
-              <img
-                v-lazy="{
-                  src: buildSrcCoverBook(scope),
-                  error: DefaltBookImg
-                }"
-                @click="onViewImage(buildSrcCoverBook(scope))"
-              />
-            </template>
-          </el-table-column>
-          <el-table-column prop="BookName" label="Tên sách" width="250" />
-          <el-table-column prop="Description" label="Mô tả" width="300" />
-          <el-table-column prop="Author" label="Tác giả" />
-          <el-table-column prop="GroupName" label="Nhóm loại sách" width="150" />
-          <el-table-column width="140">
-            <template #default="scope">
-              <el-button size="small" @click="onOpentFormEdit(scope.$index, scope.row)"
-                >Sửa</el-button
-              >
-              <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)"
-                >Xóa</el-button
-              >
-            </template>
-          </el-table-column>
-        </el-table>
-        <div class="mt-3 flex justify-between">
-          <div>
-            Tổng:
-            <span class="font-bold">
-              {{ state.totalBook }}
-            </span>
+        <CardBox>
+          <el-table
+            :data="eBooks"
+            height="500"
+            style="width: 100%"
+            :border="true"
+            size="large"
+            row-key="BookId"
+          >
+            <el-table-column type="selection" width="55" />
+            <el-table-column width="100" label="Ảnh bìa" class-name="cover-book">
+              <template #default="scope">
+                <img
+                  v-lazy="{
+                    src: buildSrcCoverBook(scope),
+                    error: DefaltBookImg
+                  }"
+                  @click="onViewImage(buildSrcCoverBook(scope))"
+                />
+              </template>
+            </el-table-column>
+            <el-table-column prop="BookName" label="Tên sách" width="220" />
+            <el-table-column prop="Description" label="Mô tả" width="300" />
+            <el-table-column prop="Author" label="Tác giả" />
+            <el-table-column prop="GroupName" label="Nhóm loại sách" width="150" />
+            <el-table-column width="140">
+              <template #default="scope">
+                <el-button size="small" @click="onOpentFormEdit(scope.$index, scope.row)"
+                  >Sửa</el-button
+                >
+                <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)"
+                  >Xóa</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+          <div class="mt-3 flex justify-between">
+            <div>
+              Tổng:
+              <span class="font-bold">
+                {{ state.totalBook }}
+              </span>
+            </div>
+            <el-pagination
+              v-model:current-page="state.currentPage"
+              v-model:page-size="state.pageSize"
+              :page-sizes="[10, 20, 30, 40]"
+              :small="small"
+              :disabled="disabled"
+              :background="background"
+              layout="sizes, prev, pager, next"
+              :total="state.totalBook"
+              @size-change="handlePageSizeChange"
+              @current-change="handleCurrentPageChange"
+            />
           </div>
-          <el-pagination
-            v-model:current-page="state.currentPage"
-            v-model:page-size="state.pageSize"
-            :page-sizes="[10, 20, 30, 40]"
-            :small="small"
-            :disabled="disabled"
-            :background="background"
-            layout="sizes, prev, pager, next"
-            :total="state.totalBook"
-            @size-change="handlePageSizeChange"
-            @current-change="handleCurrentPageChange"
-          />
-        </div>
+        </CardBox>
       </div>
     </SectionMain>
   </LayoutAuthenticated>
@@ -66,6 +75,7 @@
 </template>
 
 <script setup>
+import CardBox from '@/components/CardBox.vue'
 import { mdiBookOpenPageVariantOutline } from '@mdi/js'
 import SectionMain from '@/components/SectionMain.vue'
 import LayoutAuthenticated from '@/layouts/LayoutAuthenticated.vue'

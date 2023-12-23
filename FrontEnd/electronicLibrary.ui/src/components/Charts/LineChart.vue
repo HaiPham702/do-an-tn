@@ -32,7 +32,10 @@ onMounted(() => {
       maintainAspectRatio: false,
       scales: {
         y: {
-          display: false
+          ticks: {
+            stepSize: 1 // Đặt giá trị chia nhỏ nhất của trục y là 1
+          },
+          stacked: true
         },
         x: {
           display: true
