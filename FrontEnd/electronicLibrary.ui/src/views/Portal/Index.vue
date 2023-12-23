@@ -10,7 +10,7 @@
       </div>
       <div class="user-info flex items-center">
         <div class="mr-4">{{ userName }}</div>
-        <el-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=phamhai-gmail-com" />
+        <el-avatar :src="mainStore.userAvatar" />
       </div>
     </div>
     <!-- Danh sách nhóm loại sách -->

@@ -44,7 +44,7 @@ export default {
       labels: [],
       datasets: [
         {
-          label: 'Lượt đọc',
+          label: 'Số sách đã đọc',
           data: [],
           backgroundColor: ['rgba(54, 162, 235, 0.2)']
         }

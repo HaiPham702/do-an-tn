@@ -6,7 +6,7 @@ import {
   mdiReload,
   mdiPoll,
   mdiBookOpenPageVariantOutline,
-  mdiAccountEdit 
+  mdiAccountEdit
 } from '@mdi/js'
 import SectionMain from '@/components/SectionMain.vue'
 import CardBoxWidget from '@/components/CardBoxWidget.vue'
@@ -19,20 +19,30 @@ import UserReadChart from '@/components/Charts/UserReadChart.vue'
 
 const bookStore = useBookStore()
 
+const totalUser = ref(0)
+const totalBook = ref(0)
+
+const getTotalUser = () => {
+  let sql = `SELECT
+              COUNT(*) as Total
+            FROM user u`
+  bookStore.executeCommand('Book', sql).then((res) => {
+    totalUser.value = res[0].Total
+  })
+}
+
+const getTotalBook = () => {
+  let sql = `SELECT
+              COUNT(*) as Total
+            FROM book`
+  bookStore.executeCommand('Book', sql).then((res) => {
+    totalBook.value = res[0].Total
+  })
+}
+
 onMounted(() => {
-  // let sql = `SELECT
-  //               b.BookId,
-  //               b.BookName,
-  //               COUNT(*) AS ReadCount
-  //               FROM book b
-  //               INNER JOIN readhistory r
-  //                   ON b.BookId = r.BookId
-  //               GROUP BY b.BookName,
-  //                       b.BookId
-  //               ORDER BY ReadCount DESC;`
-  // bookStore.executeCommand('Book', sql).then((res) => {
-  //   debugger
-  // })
+  getTotalUser()
+  getTotalBook()
 })
 </script>
 
@@ -47,13 +57,13 @@ onMounted(() => {
           trend-type="up"
           color="text-emerald-500"
           :icon="mdiAccountMultiple"
-          :number="512"
+          :number="totalUser"
           label="Bạn đọc"
         />
         <CardBoxWidget
           color="text-blue-500"
           :icon="mdiBookOpenPageVariantOutline"
-          :number="7770"
+          :number="totalBook"
           label="Đầu sách"
         />
       </div>

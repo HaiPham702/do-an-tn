@@ -36,13 +36,16 @@ export const useAuthStore = defineStore('login', () => {
         router.push({
           name: 'dashboard'
         })
+        setTimeout(() => {
+          location.reload()
+        }, 500)
       })
-      .catch((res) => {})
+      .catch((res) => {
+        return res.data
+      })
       .finally(() => {
         loading.value = false
       })
-
-    return res.data
   }
 
   return {

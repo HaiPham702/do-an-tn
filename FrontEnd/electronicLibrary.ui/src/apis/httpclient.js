@@ -15,7 +15,7 @@ const context = useContextStore()
 class AxiosHttpClient {
   async requestPost(config, method, contenType = ApplicationJson) {
     this.requestAsync(config, POST, contenType)
-  } 
+  }
   debugger
   async requestAsync(config, method, contenType = ApplicationJson) {
     this._processHeaders(config, contenType)
@@ -45,7 +45,7 @@ class AxiosHttpClient {
     let headers = config.headers || {}
     if (!headers['Authorization']) {
       if (context.Token) {
-        config.headers['Authorization'] =  `Bearer ${context.Token}` 
+        config.headers['Authorization'] = `Bearer ${context.Token}`
       }
     }
 

@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { ElLoading } from 'element-plus'
 import httpclient from '@/apis/httpclient'
 import axios from 'axios'
+import { useContextStore } from '@/stores/contextStore.js'
 
 export const useBaseStore = defineStore('base', () => {
   const controlName = ref('')
@@ -10,6 +11,8 @@ export const useBaseStore = defineStore('base', () => {
   const items = ref([])
 
   const loading = ref(false)
+
+  const context = useContextStore()
 
   const buildUrl = () => {
     return window._apis['Business'] + '/'
@@ -71,12 +74,19 @@ export const useBaseStore = defineStore('base', () => {
 
   const uploadFile = async (controlName, playload) => {
     loading.value = true
+
+    const headers = {
+      'Content-Type': 'multipart/form-data'
+    }
+    if (context.Token) {
+      headers['Authorization'] = `Bearer ${context.Token}`
+    }
+
     return await axios
       .post(buildUrl() + `${controlName}` + '/UploadFile', playload, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).finally(() => {
+        headers
+      })
+      .finally(() => {
         loading.value = false
       })
   }

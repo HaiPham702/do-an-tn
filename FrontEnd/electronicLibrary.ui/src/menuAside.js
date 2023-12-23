@@ -1,14 +1,8 @@
 import {
-  mdiAccountCircle,
   mdiMonitor,
-  mdiLock,
-  mdiAlertCircle,
   mdiAccountGroupOutline,
   mdiBookOpen,
-  mdiViewList,
   mdiCog,
-  mdiResponsive,
-  mdiPalette
 } from '@mdi/js'
 
 export default [
@@ -28,8 +22,8 @@ export default [
     icon: mdiAccountGroupOutline
   },
   {
-    to: '/ui',
-    label: 'Hệ thống',
+    to: '/portal',
+    label: 'Cổng bạn đọc',
     icon: mdiCog
   },
 

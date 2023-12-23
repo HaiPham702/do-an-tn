@@ -50,7 +50,7 @@ const submitPass = () => {
             <FormFilePicker accept="image/* " label="Upload" />
           </FormField> -->
 
-          <FormField label="Họ và tên" help="Required. Your name">
+          <FormField label="Họ và tên">
             <FormControl
               v-model="profileForm.name"
               :icon="mdiAccount"
@@ -59,7 +59,7 @@ const submitPass = () => {
               autocomplete="username"
             />
           </FormField>
-          <FormField label="E-mail" help="Required. Your e-mail">
+          <FormField label="E-mail" >
             <FormControl
               v-model="profileForm.email"
               :icon="mdiMail"
