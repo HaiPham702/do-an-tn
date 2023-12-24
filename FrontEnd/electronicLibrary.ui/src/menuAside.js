@@ -2,7 +2,7 @@ import {
   mdiMonitor,
   mdiAccountGroupOutline,
   mdiBookOpen,
-  mdiCog,
+  mdiPageLayoutHeader,
 } from '@mdi/js'
 
 export default [
@@ -24,7 +24,7 @@ export default [
   {
     to: '/portal',
     label: 'Cổng bạn đọc',
-    icon: mdiCog
+    icon: mdiPageLayoutHeader
   },
 
 

@@ -24,7 +24,8 @@
           <div class="author my-2">Tác giả: {{ dataBookDetail.Author }}</div>
           <div class="">Nhà xuất bản: {{ dataBookDetail.PublisherName }}</div>
           <div class="my-2">Thể loại: {{ data[0].GroupName }}</div>
-          <div class="">Năm xuất bản: {{ data[0].GroupName }}</div>
+          <div class="my-2">Lượt đọc: {{ dataBookDetail.TotalRead }}</div>
+          <div class="">Năm xuất bản: --</div>
           <div class="read-book" @click="onReadBook">Đọc sách</div>
         </div>
       </div>

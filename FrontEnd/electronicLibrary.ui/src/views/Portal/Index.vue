@@ -101,7 +101,7 @@ const getBooksRead = () => {
               INNER JOIN readhistory r
                 ON vb.BookId = r.BookId
               WHERE r.UserId = ${context.user.userId} 
-              ORDER BY r.BookId`
+              ORDER BY r.ReadHistoryId DESC`
 
   bookStore.executeCommand('Book', sql).then((res) => {
     booksRead.value = res
@@ -128,7 +128,6 @@ const logout = () => {
   router.push({
     name: 'login'
   })
-  localStorage.clear()
 }
 
 const goAdministration = () => {

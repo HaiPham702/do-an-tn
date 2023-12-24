@@ -2,7 +2,7 @@
   <el-dialog
     v-if="dialogFormVisible"
     v-model="dialogFormVisible"
-    title="Cập nhật sách điện tử"
+    :title="formTitle"
     width="80%"
     draggable
   >
@@ -155,6 +155,9 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const { proxy } = getCurrentInstance()
+
+    const formTitle = ref('Cập nhật sách điện tử')
+
     const formData = ref({})
 
     const changeFile = ref(false)
@@ -177,7 +180,7 @@ export default defineComponent({
 
     const submitData = async () => {
       if (fileBook.value) {
-        if (changeFile.value) {
+        if (changeFile.value || editMode.value == 1) {
           publisherStore
             .uploadFile('Book', {
               file: fileBook.value,
@@ -186,8 +189,9 @@ export default defineComponent({
             .then((res) => {
               switch (editMode.value) {
                 case 1: // insert
-                  break
+                  submitInsert(res.data)
 
+                  break
                 case 2: // update
                   submitUpdate(res.data)
                   break
@@ -196,8 +200,8 @@ export default defineComponent({
         } else {
           switch (editMode.value) {
             case 1: // insert
+              // submitInsert()
               break
-
             case 2: // update
               submitUpdate()
               break
@@ -209,6 +213,29 @@ export default defineComponent({
           message: 'File sách không được để trống'
         })
       }
+    }
+
+    const submitInsert = (fileData) => {
+      let data = formData.value
+      let sql = `INSERT INTO book (BookName, Description, BookGroupId, Author, PublisherId, IsActive, FileBookID, FileCoverBook, FileName)
+                 VALUES ('${data.BookName}', '${data.Description ? data.Description : ''}', ${
+                   data.BookGroupID
+                 }, '${data.Author ? data.Author : ''}', ${
+                   data.PublisherId ? data.PublisherId : null
+                 }, 1, '${fileData.fileName}', '${fileData.imageCoverName}', '${
+                   fileData.fileNameUser
+                 }');`
+      debugger
+      publisherStore.executeCommand('Publisher', sql).then((res) => {
+        ElMessage({
+          type: 'success',
+          message: 'Thêm mới thành công'
+        })
+
+        emit('reloadData')
+
+        dialogFormVisible.value = false
+      })
     }
 
     const submitUpdate = (fileData) => {
@@ -311,8 +338,6 @@ export default defineComponent({
       }
     })
 
-
-
     watch(
       () => props.formParam,
       (val) => {
@@ -336,6 +361,12 @@ export default defineComponent({
             }
           }
           changeFile.value = false
+        }
+
+        if (editMode.value == 1) {
+          formTitle.value = 'Thêm sách điện tử'
+        } else {
+          formTitle.value = 'Cập nhật sách điện tử'
         }
       }
     )
@@ -368,6 +399,7 @@ export default defineComponent({
     })
 
     return {
+      formTitle,
       changeFile,
       fileNameUser,
       fileBook,

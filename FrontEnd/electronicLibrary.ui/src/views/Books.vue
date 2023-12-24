@@ -6,6 +6,16 @@
         title="Danh sách sách điện tử"
         main
       >
+        <div class="group-right">
+          <el-input
+            v-model="textSearch"
+            class="w-50 m-2"
+            size="large"
+            placeholder="Nhập nhan đề"
+            @keydown.enter="searchBook"
+          />
+          <el-button size="large" type="primary" @click="opentAddBook"> Thêm sách </el-button>
+        </div>
       </SectionTitleLineWithButton>
       <div class="container-grid">
         <CardBox>
@@ -94,6 +104,12 @@ const state = reactive({
   currentPage: 1
 })
 
+const opentAddBook = () => {
+  formParam.value = {}
+  refDetail.value.showBookDetail()
+  refDetail.value.editMode = 1
+}
+
 const bookStore = useBookStore()
 
 const viewImageVisible = ref(false)
@@ -119,6 +135,23 @@ const buildSrcCoverBook = (data) => {
   }
 }
 
+const textSearch = ref()
+
+const searchBook = () => {
+  if (textSearch.value?.length) {
+    let filter = JSON.stringify([
+      {
+        ColName: 'BookName',
+        Value: `%${textSearch.value}%`,
+        Operator: 'LIKE'
+      }
+    ])
+    loadData(filter)
+  } else {
+    loadData()
+  }
+}
+
 const handlePageSizeChange = (num) => {
   state.pageSize = num
   loadData()
@@ -131,12 +164,12 @@ const handleCurrentPageChange = (num) => {
 /**
  * get books
  */
-const loadData = () => {
+const loadData = (filter) => {
   // get data eBook
   let payload = {
     columns: '',
     sort: 'BookName',
-    filter: null,
+    filter: filter ? filter : null,
     limt: state.pageSize,
     skip: state.pageSize * (state.currentPage - 1)
   }
@@ -180,5 +213,13 @@ const handleDelete = (index, rowData) => {
 <style lang="scss" scoped>
 .container-grid {
   height: calc(100% - 500px);
+}
+
+.group-right {
+  display: flex;
+  align-items: center;
+  :deep(.el-input) {
+    width: 250px;
+  }
 }
 </style>

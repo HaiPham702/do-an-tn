@@ -13,7 +13,7 @@ const routes = [
   },
   {
     meta: {
-      title: 'Books'
+      title: 'Sách'
     },
     path: '/books',
     name: 'books',

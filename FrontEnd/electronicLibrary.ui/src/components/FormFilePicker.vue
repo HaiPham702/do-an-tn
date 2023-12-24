@@ -59,6 +59,7 @@ const upload = (event) => {
   if (file.type === 'application/pdf') {
     file.value = file
     emit('update:modelValue', file.value)
+    emit('changeFile', file.value)
   } else {
     ElMessage({
       type: 'error',
@@ -66,7 +67,6 @@ const upload = (event) => {
     })
     file.value = null
     emit('update:modelValue', file.value)
-    emit('changeFile', file.value)
   }
 }
 </script>

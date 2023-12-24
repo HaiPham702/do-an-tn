@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue'
 import {
+  mdiFileAlertOutline,
   mdiAccountMultiple,
   mdiChartTimelineVariant,
   mdiReload,
@@ -40,9 +41,23 @@ const getTotalBook = () => {
   })
 }
 
+const totalBookNotAttachment = ref(0)
+
+const getTotalBookNotAttachment = () => {
+  let sql = `SELECT
+            COUNT(*) AS Total
+          FROM view_book vb
+          WHERE vb.FileBookID IS NULL
+          OR vb.FileBookID = ''`
+  bookStore.executeCommand('Book', sql).then((res) => {
+    totalBookNotAttachment.value = res[0].Total
+  })
+}
+
 onMounted(() => {
   getTotalUser()
   getTotalBook()
+  getTotalBookNotAttachment()
 })
 </script>
 
@@ -52,7 +67,7 @@ onMounted(() => {
       <SectionTitleLineWithButton :icon="mdiChartTimelineVariant" title="Tổng quan" main>
       </SectionTitleLineWithButton>
 
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
         <CardBoxWidget
           trend-type="up"
           color="text-emerald-500"
@@ -65,6 +80,12 @@ onMounted(() => {
           :icon="mdiBookOpenPageVariantOutline"
           :number="totalBook"
           label="Đầu sách"
+        />
+        <CardBoxWidget
+          color="text-red-500"
+          :icon="mdiFileAlertOutline"
+          :number="totalBookNotAttachment"
+          label="Sách chưa được gắn File"
         />
       </div>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
