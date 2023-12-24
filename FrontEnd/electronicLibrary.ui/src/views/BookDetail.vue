@@ -181,22 +181,29 @@ export default defineComponent({
     const submitData = async () => {
       if (fileBook.value) {
         if (changeFile.value || editMode.value == 1) {
-          publisherStore
-            .uploadFile('Book', {
-              file: fileBook.value,
-              imageCover: fileCover.value ? fileCover.value[0]?.raw : null
+          if ((fileBook.value.size / (1024 * 1024)).toFixed(2) > 25) {
+            ElMessage({
+              type: 'warning',
+              message: 'File sách không được vượt quá 20MB'
             })
-            .then((res) => {
-              switch (editMode.value) {
-                case 1: // insert
-                  submitInsert(res.data)
+          } else {
+            publisherStore
+              .uploadFile('Book', {
+                file: fileBook.value,
+                imageCover: fileCover.value ? fileCover.value[0]?.raw : null
+              })
+              .then((res) => {
+                switch (editMode.value) {
+                  case 1: // insert
+                    submitInsert(res.data)
 
-                  break
-                case 2: // update
-                  submitUpdate(res.data)
-                  break
-              }
-            })
+                    break
+                  case 2: // update
+                    submitUpdate(res.data)
+                    break
+                }
+              })
+          }
         } else {
           switch (editMode.value) {
             case 1: // insert
