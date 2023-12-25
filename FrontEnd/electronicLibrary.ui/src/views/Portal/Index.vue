@@ -67,7 +67,16 @@
       </div>
     </div>
     <div class="container-portal">
-      <GroupViewBook v-if="booksRead.length" title="Sách đang đọc" :data="booksRead" />
+      <GroupViewBook
+        v-if="booksRead.length && showGroupHistory"
+        title="Sách đang đọc"
+        :data="booksRead"
+      />
+
+      <div v-else class="book-empty">
+        <img :src="EmptyBookImage" />
+        {{ emptyText }}
+      </div>
 
       <GroupViewBook v-for="(item, index) in books" :key="index" :data="item" />
     </div>
@@ -80,6 +89,7 @@ import { useBookStore } from '@/stores/bussiness/bookStore.js'
 import GroupViewBook from '@/views/Portal/GroupViewBook.vue'
 import { useRouter } from 'vue-router'
 import { useContextStore } from '@/stores/contextStore.js'
+import EmptyBookImage from '@/assets/image/empty-books.svg'
 
 const context = useContextStore()
 
@@ -88,11 +98,15 @@ const userName = computed(() => mainStore.userName)
 
 const router = useRouter()
 
+const showGroupHistory = ref(true)
+
 const bookStore = useBookStore()
 
 const groupBook = ref([])
 
 const booksRead = ref([])
+
+const emptyText = ref('')
 
 const getBooksRead = () => {
   let sql = `SELECT
@@ -168,9 +182,21 @@ const getBooks = () => {
             OR b.Author LIKE '%${textSearch.value.trim()}%')
             AND b.FileBookID IS NOT NULL
             ORDER BY b1.BookGroupId`
+  if (!(textSearch.value.trim() != '')) {
+    showGroupHistory.value = true
+  } else {
+    showGroupHistory.value = false
+  }
 
   bookStore.executeCommand('Book', sql).then((res) => {
     books.value = groupBy(res, 'BookGroupID')
+    if (!res.length) {
+      if (showGroupHistory.value) {
+        emptyText.value = 'Hiện chưa có sách điện tử nào.'
+      } else {
+        emptyText.value = `Không tìm thấy sách nào với từ khóa "${textSearch.value.trim()}".`
+      }
+    }
   })
 }
 
@@ -191,6 +217,14 @@ onMounted(() => {
   margin: auto;
   .portal-info {
   }
+}
+
+.book-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
 }
 
 .search-container {
