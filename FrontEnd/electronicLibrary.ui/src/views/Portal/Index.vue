@@ -62,7 +62,7 @@
           />
         </div>
         <button class="btn-search">
-          <div class="text">Tìm kiếm</div>
+          <div class="text" style="color: red;">Tìm kiếm</div>
         </button>
       </div>
     </div>
@@ -73,12 +73,12 @@
         :data="booksRead"
       />
 
-      <div v-else class="book-empty">
+      <GroupViewBook v-for="(item, index) in books" :key="index" :data="item" />
+
+      <div v-if="emptyText != '' && !showGroupHistory && isEmpty(books)" class="book-empty">
         <img :src="EmptyBookImage" />
         {{ emptyText }}
       </div>
-
-      <GroupViewBook v-for="(item, index) in books" :key="index" :data="item" />
     </div>
   </div>
 </template>
@@ -171,6 +171,16 @@ const groupBy = (array, key) => {
 
 const books = ref([])
 
+function isEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false
+    }
+  }
+
+  return true
+}
+
 const getBooks = () => {
   let sql = `SELECT
               b.*,
@@ -190,6 +200,7 @@ const getBooks = () => {
 
   bookStore.executeCommand('Book', sql).then((res) => {
     books.value = groupBy(res, 'BookGroupID')
+
     if (!res.length) {
       if (showGroupHistory.value) {
         emptyText.value = 'Hiện chưa có sách điện tử nào.'

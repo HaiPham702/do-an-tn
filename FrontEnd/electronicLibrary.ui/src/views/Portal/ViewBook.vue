@@ -135,7 +135,7 @@ onMounted(() => {
         })
         setTimeout(() => {
           location.reload()
-        }, 10)
+        }, 300)
 
         break
 

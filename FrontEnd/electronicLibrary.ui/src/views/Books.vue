@@ -40,7 +40,13 @@
               </template>
             </el-table-column>
             <el-table-column prop="BookName" label="Tên sách" width="220" />
-            <el-table-column prop="Description" label="Mô tả" width="300" />
+            <el-table-column prop="Description" label="Mô tả" width="300">
+              <template #default="scope">
+                <div style="word-break: auto-phrase" :title="scope.row?.Description">
+                  {{ scope.row?.Description }}
+                </div>
+              </template>
+            </el-table-column>
             <el-table-column prop="Author" label="Tác giả" />
             <el-table-column prop="GroupName" label="Nhóm loại sách" width="150" />
             <el-table-column width="140">
